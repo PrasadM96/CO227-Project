@@ -15,9 +15,6 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    CardView cardview = (CardView) findViewById(R.id.cardView); // creating a CardView and assigning a value.
-
-
 
 
 
