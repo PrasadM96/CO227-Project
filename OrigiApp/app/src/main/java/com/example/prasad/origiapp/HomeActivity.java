@@ -1,6 +1,7 @@
 package com.example.prasad.origiapp;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -9,43 +10,35 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Response;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class HomeActivity extends AppCompatActivity {
 
-    EditText et_username,et_password;
-    Button login;
-    DatabaseReference dreff;
-    Member member;
+    EditText pas,usr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        //FirebaseApp.initializeApp(HomeActivity.this);
 
-        et_username = (EditText) findViewById(R.id.et_username);
-        et_password = (EditText) findViewById(R.id.et_password);
-        login = (Button) findViewById(R.id.login);
-        member = new Member();
-        dreff = FirebaseDatabase.getInstance().getReference().child("Member");
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                member.setUsername(et_username.getText().toString().trim());
-                member.setPassword(et_password.getText().toString());
+        usr = (EditText) findViewById( R.id.et_username);
+        pas = (EditText) findViewById(R.id.et_password);
 
-                dreff.push().setValue(member);
-                Intent homeIntent =new Intent(HomeActivity.this,RealActivity.class);
-                startActivity(homeIntent);
-                finish();
-                Toast.makeText(HomeActivity.this,"data successfully added",Toast.LENGTH_LONG).show();
-            }
-        });
-        //Toast.makeText(HomeActivity.this,"Firebase connection succes",Toast.LENGTH_LONG).show();
     }
 
+    public void login(View view){
+        String user = usr.getText().toString();
+        String pass = pas.getText().toString();
+
+        background bg = new background(this);
+        bg.execute(user,pass);
+    }
 
 }
