@@ -3,6 +3,8 @@ package com.example.prasad.origiapp;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -16,6 +18,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class background extends AsyncTask <String, Void,String> {
 
@@ -35,13 +39,22 @@ public class background extends AsyncTask <String, Void,String> {
     @Override
     protected void onPostExecute(String s) {
         dialog.setMessage(s);
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogTheme;
         dialog.show();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.rgb(  249, 231, 159)));
         if(s.contains("login successful"))
         {
             Intent intent_name = new Intent();
             intent_name.setClass(context.getApplicationContext(),RealActivity.class);
             context.startActivity(intent_name);
         }
+        final Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            public void run() {
+                dialog.dismiss(); // when the task active then close the dialog
+                t.cancel(); // also just top the timer thread, otherwise, you may receive a crash report
+            }
+        }, 2000);
     }
     @Override
     protected String doInBackground(String... voids) {
