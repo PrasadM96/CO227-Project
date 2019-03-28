@@ -6,12 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".RealActivity">
 
+<<<<<<< HEAD
 <!--
+=======
+    <TextView
+        android:id="@+id/relay_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
+>>>>>>> 9ddadb96824e4de582a424001f44b3317ec3e5f8
     <Button
         android:id="@+id/logout"
         android:layout_width="300dp"
         android:layout_height="50dp"
+<<<<<<< HEAD
         android:layout_below="@+id/textView2"
+=======
+        android:id="@+id/logout"
+        android:layout_marginBottom="31dp"
+        android:layout_below="@+id/relay_status"
+>>>>>>> 9ddadb96824e4de582a424001f44b3317ec3e5f8
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="31dp"
         android:background="@drawable/login"

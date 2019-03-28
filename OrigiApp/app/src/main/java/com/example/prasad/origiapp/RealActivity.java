@@ -10,11 +10,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.Toast;
+=======
+import android.widget.EditText;
+import android.widget.TextView;
+>>>>>>> 9ddadb96824e4de582a424001f44b3317ec3e5f8
 
 public class RealActivity extends AppCompatActivity {
 
     Button logout;
+    TextView relay_status;
+
+    String relay;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +35,8 @@ public class RealActivity extends AppCompatActivity {
 
 /*
         logout = (Button) findViewById(R.id.logout);
+        relay_status = (TextView) findViewById(R.id.relay_status);
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
