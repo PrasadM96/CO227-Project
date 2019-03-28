@@ -41,4 +41,10 @@ public class HomeActivity extends AppCompatActivity {
         bg.execute(user,pass);
     }
 
+    public void toreal(View view){
+        Intent realIntent =new Intent(HomeActivity.this,RealActivity.class);
+        startActivity(realIntent);
+        finish();
+    }
+
 }
