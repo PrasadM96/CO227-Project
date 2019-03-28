@@ -7,10 +7,9 @@
     tools:context=".RealActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/relay_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Power"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"/>
     <Button
@@ -18,7 +17,7 @@
         android:layout_height="50dp"
         android:id="@+id/logout"
         android:layout_marginBottom="31dp"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/relay_status"
         android:layout_centerHorizontal="true"
         android:text="Logout"
         android:background="@drawable/login"

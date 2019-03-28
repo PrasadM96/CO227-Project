@@ -2,6 +2,7 @@ package com.example.prasad.origiapp;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,14 +24,15 @@ public class HomeActivity extends AppCompatActivity {
 
     // Declaring layout button, edit texts
     Button login;
-    EditText username,password;
+    EditText serial,password;
     //ProgressBar progressBar;
     // End Declaring layout button, edit texts
 
     // Declaring connection variables
     Connection con;
     String un,pass,db,ip;
-    String usernam,passwordd;
+    String seria,passwordd;
+    String relay;
     //End Declaring connection variables
 
     @Override
@@ -40,19 +43,8 @@ public class HomeActivity extends AppCompatActivity {
 
         // Getting values from button, texts and progress bar
         login = (Button) findViewById(R.id.login);
-        username = (EditText) findViewById(R.id.etSerial);
+        serial = (EditText) findViewById(R.id.etSerial);
         password = (EditText) findViewById(R.id.etAccNo);
-        //progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        //progressBar.setVisibility(View.GONE);
-        // End Getting values from button, texts and progress bar
-
-        /*// Declaring Server ip, username, database name and password
-        ip = "192.168.1.9";
-        db = "msss";
-        un = "DESKTOP-O439JCP/user";
-        pass = "";
-        // Declaring Server ip, username, database name and password*/
-
 
         // Setting up the function when button login is clicked
         login.setOnClickListener(new View.OnClickListener()
@@ -60,7 +52,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                usernam = username.getText().toString();
+                seria = serial.getText().toString();
                 passwordd = password.getText().toString();
                 CheckLogin checkLogin = new CheckLogin();// this is the Asynctask, which is used to process in background to reduce load on app process
                 checkLogin.execute("");
@@ -85,10 +77,17 @@ public class HomeActivity extends AppCompatActivity {
         protected void onPostExecute(String r)
         {
             //progressBar.setVisibility(View.GONE);
-            Toast.makeText(HomeActivity.this, r, Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(HomeActivity.this, r, Toast.LENGTH_SHORT);
+            TextView v = (TextView) toast.getView().findViewById(android.R.id.message);
+            v.setTextColor(Color.RED);
+            toast.show();
+
             if(isSuccess)
             {
-                Toast.makeText(HomeActivity.this , "Login Successfull" , Toast.LENGTH_LONG).show();
+                Toast toast2 = Toast.makeText(HomeActivity.this , "Login Successfull" , Toast.LENGTH_LONG);
+                TextView v2 = (TextView) toast2.getView().findViewById(android.R.id.message);
+                v2.setTextColor(Color.rgb(0,100,0));
+                toast2.show();
                 //finish();
             }
         }
@@ -96,7 +95,7 @@ public class HomeActivity extends AppCompatActivity {
         protected String doInBackground(String... params)
         {
 
-            if(usernam.trim().equals("")|| passwordd.trim().equals(""))
+            if(seria.trim().equals("")|| passwordd.trim().equals(""))
                 z = "Please enter Serial and AccNo";
             else
             {
@@ -109,7 +108,7 @@ public class HomeActivity extends AppCompatActivity {
                     }
                     else
                     {
-                        String query = "SELECT * FROM [DB_A46EC4_ceb].[dbo].[CustomerMeterRelation] where MSerial= '" + usernam.toString() + "' and ConsumerAccountNo = '"+ passwordd.toString() +"' ";
+                        String query = "SELECT * FROM [DB_A46EC4_ceb].[dbo].[CustomerMeterRelation] where MSerial= '" + seria.toString() + "' and ConsumerAccountNo = '"+ passwordd.toString() +"' ";
                         Statement stmt = con.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
                         if(rs.next())
@@ -150,8 +149,7 @@ public class HomeActivity extends AppCompatActivity {
         {
             Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
             ConnectionURL = "jdbc:jtds:sqlserver://sql7005.site4now.net;database=DB_A46EC4_ceb;user=DB_A46EC4_ceb_admin;password=aab-4962672";
-//            ConnectionURL = "jdbc:jtds:sqlserver://192.168.1.9;database=msss;instance=SQLEXPRESS;Network Protocol=NamedPipes" ;
-
+            //ConnectionURL = "jdbc:jtds:sqlserver://192.168.1.9;database=msss;instance=SQLEXPRESS;Network Protocol=NamedPipes" ;
 
             connection = DriverManager.getConnection(ConnectionURL);
         }
@@ -169,5 +167,13 @@ public class HomeActivity extends AppCompatActivity {
         }
         return connection;
     }
+    public String getUsernam() {
+        return seria;
+    }
+
+    public String getRelay() {
+        return relay;
+    }
+
 
 }
