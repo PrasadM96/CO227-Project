@@ -11,6 +11,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:layout_above="@+id/etSerial"
+    android:paddingBottom="20dp"
     android:layout_centerHorizontal="true"
     android:id="@+id/relative">
     <ImageView
@@ -19,7 +21,7 @@
         android:layout_height="134dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         app:srcCompat="@drawable/ceb" />
 
     <TextView
@@ -27,42 +29,40 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView"
         android:text="CEB"
-        android:paddingBottom="40dp"
         android:textColor="#ffffff"
         android:layout_centerHorizontal="true"
         android:textSize="20dp"/>
-
-
 </RelativeLayout>
+
     <EditText
-        android:id="@+id/et_username"
+        android:id="@+id/etSerial"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_action_name1"
         android:ems="10"
-        android:hint=" Username"
+        android:hint="Serial"
         android:inputType="textPersonName"
         android:textSize="16dp"
         android:textColor="#ffffff"
         android:layout_marginBottom="35dp"
-        android:layout_above="@+id/et_password"
+        android:layout_above="@+id/etAccNo"
         android:layout_centerHorizontal="true" />
 
     <EditText
-        android:id="@+id/et_password"
+        android:id="@+id/etAccNo"
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:background="#11000000"
         android:drawableLeft="@drawable/ic_action_name"
         android:ems="10"
-        android:hint=" Password"
+        android:hint="AccNo"
         android:textColor="#ffffff"
         android:inputType="textPassword"
-        android:layout_marginBottom="130dp"
+        android:layout_marginBottom="100dp"
         android:layout_alignBottom="@+id/login"
-        android:layout_alignLeft="@+id/et_username"
-        android:layout_alignStart="@+id/et_username" />
+        android:layout_alignLeft="@+id/etSerial"
+        android:layout_alignStart="@+id/etSerial" />
 
     <Button
         android:layout_width="300dp"
@@ -73,7 +73,6 @@
         android:layout_centerHorizontal="true"
         android:text="Login"
         android:background="@drawable/login"
-        android:onClick="login"
         >
     </Button>
 
@@ -90,16 +89,25 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
 
         android:id="@+id/linearLayout">
 
-
-
-
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="40dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/colorAccent"
+        android:indeterminateTintMode="src_atop"
+        android:visibility="visible" />
 
 </RelativeLayout>
