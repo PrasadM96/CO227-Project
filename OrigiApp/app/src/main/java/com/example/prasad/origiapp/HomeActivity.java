@@ -23,7 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     // Declaring layout button, edit texts
     Button login;
     EditText username,password;
-    ProgressBar progressBar;
+    //ProgressBar progressBar;
     // End Declaring layout button, edit texts
 
     // Declaring connection variables
@@ -42,8 +42,8 @@ public class HomeActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.login);
         username = (EditText) findViewById(R.id.etSerial);
         password = (EditText) findViewById(R.id.etAccNo);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.GONE);
+        //progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        //progressBar.setVisibility(View.GONE);
         // End Getting values from button, texts and progress bar
 
         /*// Declaring Server ip, username, database name and password
@@ -78,13 +78,13 @@ public class HomeActivity extends AppCompatActivity {
         protected void onPreExecute()
 
         {
-            progressBar.setVisibility(View.VISIBLE);
+            //progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
         protected void onPostExecute(String r)
         {
-            progressBar.setVisibility(View.GONE);
+            //progressBar.setVisibility(View.GONE);
             Toast.makeText(HomeActivity.this, r, Toast.LENGTH_SHORT).show();
             if(isSuccess)
             {
