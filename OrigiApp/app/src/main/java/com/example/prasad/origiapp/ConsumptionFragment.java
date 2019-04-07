@@ -139,7 +139,7 @@ public class ConsumptionFragment extends Fragment implements OnChartGestureListe
         lineChart.setData(data);
 
         set1.setFillAlpha(110);
-        set1.setColor(Color.BLACK);
+        set1.setColor(Color.BLUE);
         set1.setValueTextSize(10f);
         set1.setLineWidth(3.75f);
         set1.setCircleRadius(5f);
