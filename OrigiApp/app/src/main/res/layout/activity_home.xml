@@ -7,6 +7,7 @@
     tools:context=".HomeActivity"
     android:background="@drawable/gradient"
     android:padding="16dp">
+
 <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -73,11 +74,7 @@
         android:layout_centerHorizontal="true"
         android:text="Login"
         android:background="@drawable/login"
-<<<<<<< HEAD
-        android:onClick="toreal"
-=======
->>>>>>> 9ddadb96824e4de582a424001f44b3317ec3e5f8
-        >
+        android:onClick="toreal">
     </Button>
 
     <TextView

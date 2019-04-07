@@ -1,14 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/light_grey">
 
+   <!--<RelativeLayout
+        android:layout_width="350dp"
+        android:layout_height="310dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="0dp"
+        android:id="@+id/l1"
+        android:background="@drawable/ring">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:id="@+id/consumption"
+        android:gravity="center"
+        android:text="aaaa"
+        android:textColor="@color/materialYello"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:padding="50dp"
+        android:text="ggg"
+        android:textSize="15dp"
+        android:layout_below="@+id/consumption"
+        android:textColor="@color/materialLightblue"
+        android:id="@+id/relayStatus"
+        android:layout_centerHorizontal="true" />
+    </RelativeLayout>-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+    <io.netopen.hotbitmapgg.library.view.RingProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         android:layout_centerInParent="true"
-        android:text="Home"
-        android:textSize="30dp"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        app:max="100"
+        app:ringColor="@android:color/darker_gray"
+        app:ringProgressColor="@color/colorPrimaryDark"
+        app:ringWidth="10dp"
+        app:style="STROKE"
+        app:textIsShow="false"
+        app:textSize="16sp" ></io.netopen.hotbitmapgg.library.view.RingProgressBar>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_alignTop="@+id/progress_bar"
+            android:layout_marginTop="40dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:id="@+id/consumption"
+                android:gravity="center"
+                android:text="aaaa"
+                android:paddingBottom="45dp"
+                android:textColor="@color/materialYello"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:padding="5dp"
+                android:text="ggg"
+                android:textSize="12dp"
+                android:layout_below="@+id/consumption"
+                android:textColor="@color/black"
+                android:id="@+id/relayStatus"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="30dp"
+            android:background="#ffff"
+            android:layout_below="@+id/progress_bar"
+            android:layout_marginTop="30dp"
+            android:id="@+id/usage1"
+            android:paddingTop="5dp"
+            android:textColor="@color/black"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="Electricity Used"
+            android:layout_below="@+id/usage1"
+            android:id="@+id/text1"
+            android:textAlignment="center"
+            android:paddingTop="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="60dp"
+            android:background="#ffff"
+            android:layout_below="@+id/text1"
+            android:id="@+id/usage2" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:text="Compared to Past Usage"
+            android:layout_below="@+id/usage2"
+            android:id="@+id/text2"
+            android:textAlignment="center"
+            android:paddingTop="5dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="80dp"
+            android:background="#ffff"
+            android:layout_below="@+id/text2"
+            android:layout_marginBottom="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="Current "
+                android:id="@+id/text3"
+                android:paddingTop="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="Current "
+                android:id="@+id/textView3"
+                android:paddingTop="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="Last"
+                android:layout_below="@+id/textView3"
+                android:id="@+id/text4"
+                android:paddingTop="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text=""
+                android:id="@+id/textView4"
+                android:layout_below="@+id/textView3"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="Projected"
+                android:layout_below="@+id/textView4"
+                android:id="@+id/text5"
+                android:paddingTop="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text=""
+                android:id="@+id/textView5"
+                android:layout_below="@+id/textView4"/>
+        </RelativeLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

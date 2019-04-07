@@ -10,19 +10,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-<<<<<<< HEAD
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
-=======
 import android.widget.EditText;
 import android.widget.TextView;
->>>>>>> 9ddadb96824e4de582a424001f44b3317ec3e5f8
+
+import com.google.android.gms.common.SignInButton;
+
+import java.util.List;
+import java.util.Map;
 
 public class RealActivity extends AppCompatActivity {
 
-    Button logout;
-    TextView relay_status;
-
+    //Button dailyConsumption,monthlyConsumption;
+    //TextView relay_status;
     String relay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,14 +37,23 @@ public class RealActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
 
-/*
-        logout = (Button) findViewById(R.id.logout);
-        relay_status = (TextView) findViewById(R.id.relay_status);
+        /*relay_status = (TextView) findViewById(R.id.relay);
+        dailyConsumption = (Button) findViewById(R.id.dailyConsumption);
+        monthlyConsumption = (Button) findViewById(R.id.monthlyConsumption);
 
-        logout.setOnClickListener(new View.OnClickListener() {
+        dailyConsumption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent homeIntent =new Intent(RealActivity.this,HomeActivity.class);
+                Intent homeIntent =new Intent(RealActivity.this,DailyConsumption.class);
+                startActivity(homeIntent);
+                finish();
+            }
+        });
+
+        monthlyConsumption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent homeIntent =new Intent(RealActivity.this,MonthlyConsumption.class);
                 startActivity(homeIntent);
                 finish();
             }
@@ -86,8 +99,6 @@ public class RealActivity extends AppCompatActivity {
         return true;
 
     }
-
-
 
 
 }

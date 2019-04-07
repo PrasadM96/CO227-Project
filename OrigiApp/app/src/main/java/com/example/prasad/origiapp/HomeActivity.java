@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
     // Declaring connection variables
     Connection con;
     String un,pass,db,ip;
-    String seria,passwordd;
+    static String seria,passwordd;
     String relay;
     //End Declaring connection variables
 
@@ -86,7 +86,7 @@ public class HomeActivity extends AppCompatActivity {
             {
                 Toast toast2 = Toast.makeText(HomeActivity.this , "Login Successfull" , Toast.LENGTH_LONG);
                 TextView v2 = (TextView) toast2.getView().findViewById(android.R.id.message);
-                v2.setTextColor(Color.rgb(0,100,0));
+                v2.setTextColor(Color.RED);
                 toast2.show();
                 //finish();
             }
@@ -101,7 +101,8 @@ public class HomeActivity extends AppCompatActivity {
             {
                 try
                 {
-                    con = connectionclass(un, pass, db, ip);        // Connect to database
+                    ConnectionHelper connectionHelper = new ConnectionHelper();
+                    con = connectionHelper.connectionclasss();        // Connect to database
                     if (con == null)
                     {
                         z = "Check Your Internet Access!";
@@ -137,52 +138,18 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
-
-    @SuppressLint("NewApi")
-    public Connection connectionclass(String user, String password, String database, String server)
-    {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        Connection connection = null;
-        String ConnectionURL = null;
-        try
-        {
-            Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
-            ConnectionURL = "jdbc:jtds:sqlserver://sql7005.site4now.net;database=DB_A46EC4_ceb;user=DB_A46EC4_ceb_admin;password=aab-4962672";
-            //ConnectionURL = "jdbc:jtds:sqlserver://192.168.1.9;database=msss;instance=SQLEXPRESS;Network Protocol=NamedPipes" ;
-
-            connection = DriverManager.getConnection(ConnectionURL);
-        }
-        catch (SQLException se)
-        {
-            Log.e("error here 1 : ", se.getMessage());
-        }
-        catch (ClassNotFoundException e)
-        {
-            Log.e("error here 2 : ", e.getMessage());
-        }
-        catch (Exception e)
-        {
-            Log.e("error here 3 : ", e.getMessage());
-        }
-        return connection;
-    }
     public String getUsernam() {
         return seria;
     }
 
-<<<<<<< HEAD
     public void toreal(View view){
         Intent realIntent =new Intent(HomeActivity.this,RealActivity.class);
         startActivity(realIntent);
         finish();
     }
 
-=======
     public String getRelay() {
         return relay;
     }
 
-
->>>>>>> 9ddadb96824e4de582a424001f44b3317ec3e5f8
 }
