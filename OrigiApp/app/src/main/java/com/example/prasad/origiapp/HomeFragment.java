@@ -88,7 +88,7 @@ public class HomeFragment extends Fragment {
             consumption.setText(monthlyConsumption+" kWh");
         }
 
-        usage1.setText("Total Usage:    "+monthlyConsumption+"      |      Load: 0.09kw      |      P.F:    1.00");
+        usage1.setText("Total Usage:    "+monthlyConsumption+"     |    Load: 0.09kw      |    P.F:   1.00");
         return view;
     }
 }
