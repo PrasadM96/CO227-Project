@@ -7,22 +7,4 @@
     android:id="@+id/fragment_consumption"
     android:background="@color/light_grey">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/linechart"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_weight="1"></com.github.mikephil.charting.charts.LineChart>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Month"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:paddingBottom="30dp"
-        android:textSize="25dp"/>
-
 </LinearLayout>
