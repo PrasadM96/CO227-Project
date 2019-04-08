@@ -20,7 +20,7 @@ import io.netopen.hotbitmapgg.library.view.RingProgressBar;
 
 public class HomeFragment extends Fragment {
 
-    TextView relay_status,consumption,usage1;
+    TextView relay_status,consumption,usage1,current,last,projected;
     RingProgressBar ringProgressBar;
 
     int progress = 0;
@@ -43,6 +43,9 @@ public class HomeFragment extends Fragment {
 
         relay_status = (TextView) view.findViewById(R.id.relayStatus) ;
         consumption = (TextView) view.findViewById(R.id.consumption);
+        current = (TextView) view.findViewById(R.id.textView3);
+        last = (TextView) view.findViewById(R.id.textView4);
+        projected = (TextView) view.findViewById(R.id.textView5);
         ringProgressBar = (RingProgressBar) view.findViewById(R.id.progress_bar);
         usage1 = (TextView) view.findViewById(R.id.usage1);
         /*ringProgressBar.setOnProgressListener(new RingProgressBar.OnProgressListener()
@@ -88,7 +91,10 @@ public class HomeFragment extends Fragment {
             consumption.setText(monthlyConsumption+" kWh");
         }
 
-        usage1.setText("Total Usage:    "+monthlyConsumption+"     |    Load: 0.09kw      |    P.F:   1.00");
+        usage1.setText("Total Usage:    "+monthlyConsumption+"     |     Load: 0.09kw      |     P.F:   1.00");
+        current.setText(monthlyConsumption);
+        last.setText(monthlyConsumption);
+        projected.setText(monthlyConsumption);
         return view;
     }
 }

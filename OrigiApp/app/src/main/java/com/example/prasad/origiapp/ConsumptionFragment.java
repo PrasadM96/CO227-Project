@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -115,6 +116,8 @@ public class ConsumptionFragment extends Fragment implements OnChartGestureListe
         lineChart.setScaleEnabled(true);
         lineChart.setDragEnabled(true);
         lineChart.setPinchZoom(true);
+        lineChart.getLegend().setEnabled(false);
+        lineChart.animateXY(1500,1500);
 
         ArrayList<Entry> yValues = new ArrayList<>();
         yValues.add(new Entry(0,Float.parseFloat((String)myDataList.get(0).values().toArray()[0])));
@@ -165,6 +168,7 @@ public class ConsumptionFragment extends Fragment implements OnChartGestureListe
         xAxis.setLabelCount(12);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(xVals));
+        xAxis.setTextSize(12f);
         xAxis.setGranularity(1);
         return fragView;
     }
