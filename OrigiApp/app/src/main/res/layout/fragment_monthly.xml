@@ -18,17 +18,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Daily"
+            android:text="Dailly"
             android:onClick="daily_graph"/>
 
-    <Button
-        android:id="@+id/bweekly"
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:onClick="weekly_graph"
-        android:text="weekly"
-        />
+        <Button
+            android:id="@+id/bweekly"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:onClick="weekly_graph"
+            android:text="weekly"
+            />
 
         <Button
             android:id="@+id/bmonthly"
@@ -51,8 +51,7 @@
         android:layout_marginBottom="125dp"
         android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        >
+        android:layout_marginEnd="10dp">
 
     </com.github.mikephil.charting.charts.LineChart>
 

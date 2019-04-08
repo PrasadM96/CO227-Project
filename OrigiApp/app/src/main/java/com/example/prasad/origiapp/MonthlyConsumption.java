@@ -9,12 +9,12 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import com.anychart.AnyChart;
+/*import com.anychart.AnyChart;
 import com.anychart.AnyChartView;
 import com.anychart.chart.common.dataentry.DataEntry;
 import com.anychart.chart.common.dataentry.ValueDataEntry;
 import com.anychart.charts.Cartesian;
-import com.anychart.charts.Pie;
+import com.anychart.charts.Pie;*/
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class MonthlyConsumption extends AppCompatActivity {
 
         Toast.makeText(MonthlyConsumption.this,(String)myDataList.get(0).values().toArray()[0],Toast.LENGTH_LONG).show();
 
-        Cartesian cartesian = AnyChart.column();
+      /*  Cartesian cartesian = AnyChart.column();
 
         List<DataEntry> data = new ArrayList<>();
         data.add(new ValueDataEntry("John", Double.parseDouble((String)myDataList.get(0).values().toArray()[0])));
@@ -48,8 +48,8 @@ public class MonthlyConsumption extends AppCompatActivity {
 
         cartesian.data(data);
 
-        AnyChartView anyChartView = (AnyChartView) findViewById(R.id.any_chart_view);
-        anyChartView.setChart(cartesian);
+      //  AnyChartView anyChartView = (AnyChartView) findViewById(R.id.any_chart_view);
+       // anyChartView.setChart(cartesian);*/
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override

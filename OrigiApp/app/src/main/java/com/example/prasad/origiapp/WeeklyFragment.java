@@ -1,9 +1,9 @@
 package com.example.prasad.origiapp;
 
+
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,7 +14,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -32,10 +31,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ConsumptionFragment extends Fragment implements OnChartGestureListener, OnChartValueSelectedListener {
 
-    private static final String TAG = "ConsumptionFragment";
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class WeeklyFragment<OnChartValueSelectedListene> extends Fragment implements OnChartGestureListener, OnChartValueSelectedListener{
+    private static final String TAG = "WeeklyFragment";
     private LineChart lineChart;
+    View fragView;
+
 
     @Nullable
     @Override
@@ -83,20 +87,23 @@ public class ConsumptionFragment extends Fragment implements OnChartGestureListe
         Log.i(TAG,"onChartTranslate: dX: "+dX+"dY: "+dY);
     }
 
-    @Override
+
     public void onValueSelected(Entry e, Highlight h) {
         Log.i(TAG,"onValueSelected: "+e.toString());
     }
 
-    @Override
+
     public void onNothingSelected() {
         Log.i(TAG,"onNothingSelected: ");
     }
-    View fragView;
-    @Nullable
+
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        fragView = inflater.inflate(R.layout.fragment_consumption, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+         fragView= inflater.inflate(R.layout.fragment_weekly, container, false);
+
         Button button1 =  fragView.findViewById(R.id.bweekly);
         Button button2 =  fragView.findViewById(R.id.bdaily);
         Button button3 =  fragView.findViewById(R.id.bmonthly);
@@ -133,11 +140,9 @@ public class ConsumptionFragment extends Fragment implements OnChartGestureListe
                 transaction.commit();// Do something in response to button click
             }
         });
-
-
         drawchart();
-
         return fragView;
+
     }
 
     public void drawchart(){
@@ -147,7 +152,7 @@ public class ConsumptionFragment extends Fragment implements OnChartGestureListe
         myDataList = getMonthlyConsumption.getdata();
 
         lineChart.setOnChartGestureListener(this);
-        lineChart.setOnChartValueSelectedListener(this);
+        lineChart.setOnChartValueSelectedListener((OnChartValueSelectedListener) this);
 
         lineChart.setDragEnabled(true);
         lineChart.setScaleEnabled(false);
@@ -157,7 +162,7 @@ public class ConsumptionFragment extends Fragment implements OnChartGestureListe
         lineChart.getAxisRight().setDrawGridLines(false);
         lineChart.getDescription().setEnabled(false);
         lineChart.setTouchEnabled(true);
-        lineChart.setOnChartValueSelectedListener(this);
+        lineChart.setOnChartValueSelectedListener((OnChartValueSelectedListener) this);
         lineChart.setScaleEnabled(true);
         lineChart.setDragEnabled(true);
         lineChart.setPinchZoom(true);
@@ -167,35 +172,8 @@ public class ConsumptionFragment extends Fragment implements OnChartGestureListe
         yValues.add(new Entry(1,500f));
         yValues.add(new Entry(2,700f));
         yValues.add(new Entry(3,300f));
-        yValues.add(new Entry(4,500f));
-        yValues.add(new Entry(5,600f));
-        yValues.add(new Entry(6,650f));
-        yValues.add(new Entry(7,250f));
-        yValues.add(new Entry(8,1100f));
-        yValues.add(new Entry(9,800f));
-        yValues.add(new Entry(10,1150f));
-        yValues.add(new Entry(11,100f));
 
-        yValues.add(new Entry(12,500f));
-        yValues.add(new Entry(13,700f));
-        yValues.add(new Entry(14,300f));
-        yValues.add(new Entry(15,500f));
-        yValues.add(new Entry(16,600f));
-        yValues.add(new Entry(17,650f));
-        yValues.add(new Entry(18,250f));
-        yValues.add(new Entry(19,1100f));
-        yValues.add(new Entry(20,800f));
-        yValues.add(new Entry(21,1150f));
-        yValues.add(new Entry(22,100f));
 
-        yValues.add(new Entry(23,500f));
-        yValues.add(new Entry(24,700f));
-        yValues.add(new Entry(25,300f));
-        yValues.add(new Entry(26,500f));
-        yValues.add(new Entry(27,600f));
-        yValues.add(new Entry(28,650f));
-        yValues.add(new Entry(29,250f));
-        yValues.add(new Entry(30,1100f));
 
 
         LineDataSet set1 = new LineDataSet(yValues,"");
@@ -216,38 +194,11 @@ public class ConsumptionFragment extends Fragment implements OnChartGestureListe
         set1.setHighLightColor(Color.WHITE);
 
         ArrayList<String> xVals = new ArrayList<>();
-        xVals.add("1");
-        xVals.add("2");
-        xVals.add("3");
-        xVals.add("4");
-        xVals.add("5");
-        xVals.add("6");
-        xVals.add("7");
-        xVals.add("8");
-        xVals.add("9");
-        xVals.add("10");
-        xVals.add("11");
-        xVals.add("12");
-        xVals.add("13");
-        xVals.add("14");
-        xVals.add("15");
-        xVals.add("16");
-        xVals.add("17");
-        xVals.add("18");
-        xVals.add("19");
-        xVals.add("20");
-        xVals.add("21");
-        xVals.add("22");
-        xVals.add("23");
-        xVals.add("24");
-        xVals.add("25");
-        xVals.add("26");
-        xVals.add("27");
-        xVals.add("28");
-        xVals.add("29");
-        xVals.add("30");
+        xVals.add("week1");
+        xVals.add("week2");
+        xVals.add("week2");
+        xVals.add("week2");
 
-        //String[] values = new String[] {"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"};
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setLabelCount(12);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -255,4 +206,7 @@ public class ConsumptionFragment extends Fragment implements OnChartGestureListe
         xAxis.setGranularity(1);
     }
 
-}
+
+
+    }
+
