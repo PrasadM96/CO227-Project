@@ -36,5 +36,4 @@
         <activity android:name=".RealActivity"
             android:label="Smart Meter"/>
     </application>
-
 </manifest>
