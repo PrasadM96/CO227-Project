@@ -176,7 +176,11 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
+<<<<<<< HEAD
                                       <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_help_black_24dp.xml" />
+=======
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_control_point_black_24dp.xml" />
+>>>>>>> 009391eb5f0d94ab87fd9a7daf93623e63694ef2
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -186,7 +190,11 @@
                         </option>
                         <option name="values">
                           <map>
+<<<<<<< HEAD
                             <entry key="outputName" value="ic_help_black_24dp_help" />
+=======
+                            <entry key="outputName" value="ic_control_point_black_24dp" />
+>>>>>>> 009391eb5f0d94ab87fd9a7daf93623e63694ef2
                             <entry key="sourceFile" value="C:\Users\User" />
                           </map>
                         </option>

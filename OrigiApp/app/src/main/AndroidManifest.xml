@@ -35,8 +35,12 @@
             android:name=".HomeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".RealActivity"
+<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar"
             />
+=======
+            android:label="Smart Meter"/>
+>>>>>>> 009391eb5f0d94ab87fd9a7daf93623e63694ef2
     </application>
 
 </manifest>
