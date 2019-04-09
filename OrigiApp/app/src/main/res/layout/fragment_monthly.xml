@@ -55,6 +55,11 @@
 
     </com.github.mikephil.charting.charts.LineChart>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="adgjdgajdgaj"/>
+
 
 
 </LinearLayout>
