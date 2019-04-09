@@ -22,40 +22,11 @@ import java.util.Map;
 
 public class ControlFragment extends Fragment {
 
-    Button dailyConsumption,monthlyConsumption,profile;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_control,container,false);
-
-        dailyConsumption = (Button) view.findViewById(R.id.dailyConsumption);
-        monthlyConsumption = (Button) view.findViewById(R.id.monthlyConsumption);
-        profile =(Button) view.findViewById(R.id.profile);
-
-        dailyConsumption.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent homeIntent =new Intent(getActivity(),DailyConsumption.class);
-                startActivity(homeIntent);
-            }
-        });
-
-        monthlyConsumption.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent homeIntent =new Intent(getActivity(),MonthlyConsumption.class);
-                startActivity(homeIntent);
-            }
-        });
-
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent homeIntent =new Intent(getActivity(),Profile.class);
-                startActivity(homeIntent);
-            }
-        });
 
         return view;
     }

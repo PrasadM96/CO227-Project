@@ -164,38 +164,12 @@
         android:layout_marginTop="20dp">
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:textStyle="bold"
             android:textAlignment="center"
             android:text="SUBMIt"
             android:background="@drawable/rounded_corner_gray"
             android:layout_gravity="center"
-            android:paddingHorizontal="30dp"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/dailyConsumption"
-            android:text="Daily Consumption"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:background="@drawable/rounded_corner_gray"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/monthlyConsumption"
-            android:text="Monthly Consumption"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:background="@drawable/rounded_corner_gray"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/profile"
-            android:text="Profile"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:background="@drawable/rounded_corner_gray"/>
+            android:paddingHorizontal="30dp" />
     </LinearLayout>
 </LinearLayout>
