@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.prasad.origiapp">
-
     <uses-permission android:name="android.permission.INTERNET" />
-
     <supports-screens
         android:largeScreens="true"
         android:normalScreens="true"
         android:smallScreens="true"
         android:xlargeScreens="true" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,7 +24,6 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -35,12 +31,9 @@
             android:name=".HomeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".RealActivity"
-<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar"
-            />
-=======
             android:label="Smart Meter"/>
->>>>>>> 009391eb5f0d94ab87fd9a7daf93623e63694ef2
+
     </application>
 
 </manifest>
