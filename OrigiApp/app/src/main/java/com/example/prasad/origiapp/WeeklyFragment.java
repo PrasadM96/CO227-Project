@@ -37,7 +37,7 @@ import java.util.Map;
  */
 public class WeeklyFragment<OnChartValueSelectedListene> extends Fragment implements OnChartGestureListener, OnChartValueSelectedListener{
     private static final String TAG = "WeeklyFragment";
-    private LineChart lineChart;
+    private LineChart dailyChart;
     View fragView;
 
 
@@ -146,35 +146,35 @@ public class WeeklyFragment<OnChartValueSelectedListene> extends Fragment implem
     }
 
     public void drawchart(){
-        lineChart = (LineChart) fragView.findViewById(R.id.linechart);
+        dailyChart = (LineChart) fragView.findViewById(R.id.linechart);
         List<Map<String,String>> myDataList = null;
-        GetMonthlyConsumption getMonthlyConsumption = new GetMonthlyConsumption();
-        myDataList = getMonthlyConsumption.getdata();
+        GetDailyConsumption getData = new GetDailyConsumption();
+        myDataList = getData.getdata();
 
-        lineChart.setOnChartGestureListener(this);
-        lineChart.setOnChartValueSelectedListener((OnChartValueSelectedListener) this);
+        dailyChart.setOnChartGestureListener(this);
+        dailyChart.setOnChartValueSelectedListener(this);
 
-        lineChart.setDragEnabled(true);
-        lineChart.setScaleEnabled(false);
-        lineChart.getAxisRight().setEnabled(false);
-        lineChart.getXAxis().setDrawGridLines(false);
-        lineChart.getAxisLeft().setDrawGridLines(false);
-        lineChart.getAxisRight().setDrawGridLines(false);
-        lineChart.getDescription().setEnabled(false);
-        lineChart.setTouchEnabled(true);
-        lineChart.setOnChartValueSelectedListener((OnChartValueSelectedListener) this);
-        lineChart.setScaleEnabled(true);
-        lineChart.setDragEnabled(true);
-        lineChart.setPinchZoom(true);
+        dailyChart.setDragEnabled(true);
+        dailyChart.setScaleEnabled(false);
+        dailyChart.getAxisRight().setEnabled(false);
+        dailyChart.getXAxis().setDrawGridLines(false);
+        dailyChart.getAxisLeft().setDrawGridLines(false);
+        dailyChart.getAxisRight().setDrawGridLines(false);
+        dailyChart.getDescription().setEnabled(false);
+        dailyChart.setTouchEnabled(true);
+        dailyChart.setOnChartValueSelectedListener(this);
+        dailyChart.setScaleEnabled(true);
+        dailyChart.setDragEnabled(true);
+        dailyChart.setPinchZoom(true);
+        dailyChart.getLegend().setEnabled(false);
+        dailyChart.animateXY(1500,1500);
 
         ArrayList<Entry> yValues = new ArrayList<>();
-        yValues.add(new Entry(0,Float.parseFloat((String)myDataList.get(0).values().toArray()[0])));
+        //yValues.add(new Entry(0,Float.parseFloat((String)myDataList.get(0).values().toArray()[0])));
         yValues.add(new Entry(1,500f));
         yValues.add(new Entry(2,700f));
         yValues.add(new Entry(3,300f));
-
-
-
+        yValues.add(new Entry(4,500f));
 
         LineDataSet set1 = new LineDataSet(yValues,"");
 
@@ -182,10 +182,11 @@ public class WeeklyFragment<OnChartValueSelectedListene> extends Fragment implem
         dataSets.add(set1);
         LineData data = new LineData(dataSets);
 
-        lineChart.setData(data);
+        dailyChart.setData(data);
+        dailyChart.setVisibleXRangeMaximum(15);
 
         set1.setFillAlpha(110);
-        set1.setColor(Color.BLACK);
+        set1.setColor(Color.BLUE);
         set1.setValueTextSize(10f);
         set1.setLineWidth(3.75f);
         set1.setCircleRadius(5f);
@@ -193,16 +194,9 @@ public class WeeklyFragment<OnChartValueSelectedListene> extends Fragment implem
         set1.setCircleColor(Color.RED);
         set1.setHighLightColor(Color.WHITE);
 
-        ArrayList<String> xVals = new ArrayList<>();
-        xVals.add("week1");
-        xVals.add("week2");
-        xVals.add("week2");
-        xVals.add("week2");
-
-        XAxis xAxis = lineChart.getXAxis();
+        XAxis xAxis = dailyChart.getXAxis();
         xAxis.setLabelCount(12);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(xVals));
         xAxis.setGranularity(1);
     }
 

@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.animation.Easing;
@@ -33,8 +36,8 @@ import java.util.Map;
 public class ConsumptionFragment extends Fragment implements OnChartGestureListener, OnChartValueSelectedListener {
 
     private static final String TAG = "ConsumptionFragment";
-    private LineChart lineChart;
-
+    private LineChart dailyChart;
+    View fragView;
     @Nullable
     @Override
     public Context getContext() {
@@ -94,8 +97,130 @@ public class ConsumptionFragment extends Fragment implements OnChartGestureListe
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View fragView = inflater.inflate(R.layout.fragment_consumption, container, false);
+        fragView = inflater.inflate(R.layout.fragment_consumption, container, false);
+
+        Button button1 =  fragView.findViewById(R.id.bweekly);
+        Button button2 =  fragView.findViewById(R.id.bdaily);
+        Button button3 =  fragView.findViewById(R.id.bmonthly);
+
+        button1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Fragment fragment = new WeeklyFragment();
+
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
+                transaction.replace(R.id.fragment_container,fragment);
+                transaction.commit();// Do something in response to button click
+            }
+        });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Fragment fragment = new MonthlyFragment();
+
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
+                transaction.replace(R.id.fragment_container,fragment);
+                transaction.commit();// Do something in response to button click
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Fragment fragment = new ConsumptionFragment();
+
+                FragmentManager fm = getFragmentManager();
+                FragmentTransaction transaction = fm.beginTransaction();
+                transaction.replace(R.id.fragment_container,fragment);
+                transaction.commit();// Do something in response to button click
+            }
+        });
+
+
+        drawchart();
 
         return fragView;
+    }
+
+    public void drawchart(){
+        dailyChart = (LineChart) fragView.findViewById(R.id.linechart);
+        List<Map<String,String>> myDataList = null;
+        GetDailyConsumption getData = new GetDailyConsumption();
+        myDataList = getData.getdata();
+
+        dailyChart.setOnChartGestureListener(this);
+        dailyChart.setOnChartValueSelectedListener(this);
+
+        dailyChart.setDragEnabled(true);
+        dailyChart.setScaleEnabled(false);
+        dailyChart.getAxisRight().setEnabled(false);
+        dailyChart.getXAxis().setDrawGridLines(false);
+        dailyChart.getAxisLeft().setDrawGridLines(false);
+        dailyChart.getAxisRight().setDrawGridLines(false);
+        dailyChart.getDescription().setEnabled(false);
+        dailyChart.setTouchEnabled(true);
+        dailyChart.setOnChartValueSelectedListener(this);
+        dailyChart.setScaleEnabled(true);
+        dailyChart.setDragEnabled(true);
+        dailyChart.setPinchZoom(true);
+        dailyChart.getLegend().setEnabled(false);
+        dailyChart.animateXY(1500,1500);
+
+        ArrayList<Entry> yValues = new ArrayList<>();
+        //yValues.add(new Entry(0,Float.parseFloat((String)myDataList.get(0).values().toArray()[0])));
+        yValues.add(new Entry(1,500f));
+        yValues.add(new Entry(2,700f));
+        yValues.add(new Entry(3,300f));
+        yValues.add(new Entry(4,500f));
+        yValues.add(new Entry(5,600f));
+        yValues.add(new Entry(6,650f));
+        yValues.add(new Entry(7,250f));
+        yValues.add(new Entry(8,1100f));
+        yValues.add(new Entry(9,800f));
+        yValues.add(new Entry(10,1150f));
+        yValues.add(new Entry(11,100f));
+        yValues.add(new Entry(12,500f));
+        yValues.add(new Entry(13,700f));
+        yValues.add(new Entry(14,300f));
+        yValues.add(new Entry(15,500f));
+        yValues.add(new Entry(16,600f));
+        yValues.add(new Entry(17,650f));
+        yValues.add(new Entry(18,250f));
+        yValues.add(new Entry(19,1100f));
+        yValues.add(new Entry(20,800f));
+        yValues.add(new Entry(21,1150f));
+        yValues.add(new Entry(22,100f));
+        yValues.add(new Entry(23,500f));
+        yValues.add(new Entry(24,700f));
+        yValues.add(new Entry(25,300f));
+        yValues.add(new Entry(26,500f));
+        yValues.add(new Entry(27,600f));
+        yValues.add(new Entry(28,650f));
+        yValues.add(new Entry(29,250f));
+        yValues.add(new Entry(30,1100f));
+        yValues.add(new Entry(31,1100f));
+
+        LineDataSet set1 = new LineDataSet(yValues,"");
+
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(set1);
+        LineData data = new LineData(dataSets);
+
+        dailyChart.setData(data);
+        dailyChart.setVisibleXRangeMaximum(15);
+
+        set1.setFillAlpha(110);
+        set1.setColor(Color.BLUE);
+        set1.setValueTextSize(10f);
+        set1.setLineWidth(3.75f);
+        set1.setCircleRadius(5f);
+        set1.setCircleHoleRadius(2.5f);
+        set1.setCircleColor(Color.RED);
+        set1.setHighLightColor(Color.WHITE);
+
+        XAxis xAxis = dailyChart.getXAxis();
+        xAxis.setLabelCount(12);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setGranularity(1);
     }
 }

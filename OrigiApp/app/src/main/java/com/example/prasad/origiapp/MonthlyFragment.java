@@ -168,6 +168,8 @@ public class MonthlyFragment extends Fragment implements OnChartGestureListener,
         lineChart.setScaleEnabled(true);
         lineChart.setDragEnabled(true);
         lineChart.setPinchZoom(true);
+        lineChart.getLegend().setEnabled(false);
+        lineChart.animateXY(1500,1500);
 
         ArrayList<Entry> yValues = new ArrayList<>();
         yValues.add(new Entry(0,Float.parseFloat((String)myDataList.get(0).values().toArray()[0])));
@@ -192,7 +194,7 @@ public class MonthlyFragment extends Fragment implements OnChartGestureListener,
         lineChart.setData(data);
 
         set1.setFillAlpha(110);
-        set1.setColor(Color.BLACK);
+        set1.setColor(Color.BLUE);
         set1.setValueTextSize(10f);
         set1.setLineWidth(3.75f);
         set1.setCircleRadius(5f);
@@ -218,6 +220,7 @@ public class MonthlyFragment extends Fragment implements OnChartGestureListener,
         xAxis.setLabelCount(12);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(xVals));
+        xAxis.setTextSize(12f);
         xAxis.setGranularity(1);
     }
 

@@ -22,14 +22,17 @@ public class HomeFragment extends Fragment {
 
     TextView relay_status,consumption,usage1,current,last,projected;
     RingProgressBar ringProgressBar;
+    String monthlyConsumption;
 
+    int limit = 1000;
+    //int value = (Integer.parseInt(monthlyConsumption)/limit)*100;
     int progress = 0;
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             if(msg.what == 0){
                 if(progress < 100){
-                    progress=5;
+                    progress++;
                     ringProgressBar.setProgress(progress);
                 }
             }
@@ -59,25 +62,11 @@ public class HomeFragment extends Fragment {
             }
         });*/
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i=0;i<100;i++){
-                    try {
-                        Thread.sleep(100);
-                        handler.sendEmptyMessage(0);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();
-
         List<Map<String,String>> myDataList1 = null;
         GetMonthlyConsumption getMonthlyConsumption = new GetMonthlyConsumption();
         myDataList1 = getMonthlyConsumption.getdata();
 
-        String monthlyConsumption = (String)myDataList1.get(0).values().toArray()[0];
+        monthlyConsumption = (String)myDataList1.get(0).values().toArray()[0];
 
         List<Map<String,String>> myDataList2 = null;
         GetRelayStatus getData = new GetRelayStatus();
@@ -95,6 +84,21 @@ public class HomeFragment extends Fragment {
         current.setText(monthlyConsumption);
         last.setText(monthlyConsumption);
         projected.setText(monthlyConsumption);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i=0;i<100;i++){
+                    try {
+                        Thread.sleep(100);
+                        handler.sendEmptyMessage(0);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+
         return view;
     }
 }
