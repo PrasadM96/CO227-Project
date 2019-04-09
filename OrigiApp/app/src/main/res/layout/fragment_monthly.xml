@@ -19,7 +19,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Dailly"
-            android:onClick="daily_graph"/>
+            android:onClick="daily_graph"
+            android:background="@drawable/rounded_corner_gray"
+            android:layout_marginHorizontal="5dp"/>
 
         <Button
             android:id="@+id/bweekly"
@@ -28,6 +30,8 @@
             android:layout_height="wrap_content"
             android:onClick="weekly_graph"
             android:text="weekly"
+            android:background="@drawable/rounded_corner_gray"
+            android:layout_marginHorizontal="5dp"
             />
 
         <Button
@@ -37,6 +41,8 @@
             android:layout_height="wrap_content"
             android:text="monthly"
             android:onClick="monthly_graph"
+            android:background="@drawable/rounded_corner_gray"
+            android:layout_marginHorizontal="5dp"
             />
     </LinearLayout>
     <FrameLayout

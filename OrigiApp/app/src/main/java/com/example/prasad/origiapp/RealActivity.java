@@ -3,9 +3,14 @@ package com.example.prasad.origiapp;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +26,7 @@ import com.google.android.gms.common.SignInButton;
 import java.util.List;
 import java.util.Map;
 
-public class RealActivity extends AppCompatActivity {
+public class RealActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     //Button dailyConsumption,monthlyConsumption;
     //TextView relay_status;
@@ -37,28 +42,31 @@ public class RealActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
 
-        /*relay_status = (TextView) findViewById(R.id.relay);
-        dailyConsumption = (Button) findViewById(R.id.dailyConsumption);
-        monthlyConsumption = (Button) findViewById(R.id.monthlyConsumption);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-        dailyConsumption.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent homeIntent =new Intent(RealActivity.this,DailyConsumption.class);
-                startActivity(homeIntent);
-                finish();
-            }
-        });
 
-        monthlyConsumption.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent homeIntent =new Intent(RealActivity.this,MonthlyConsumption.class);
-                startActivity(homeIntent);
-                finish();
-            }
-        });*/
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 
     private   BottomNavigationView.OnNavigationItemSelectedListener navListner =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -98,6 +106,28 @@ public class RealActivity extends AppCompatActivity {
 
         return true;
 
+    }
+    Fragment selectedFragment1=null;
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_draw_home) {
+            selectedFragment1 =new HomeFragment();
+        } else if (id == R.id.nav_draw_profile) {
+            selectedFragment1 =new ProfileFragment();
+        } else if (id == R.id.nav_draw_contact) {
+            selectedFragment1 =new ContactUsFragment();
+        } else if (id == R.id.nav_draw_help) {
+            selectedFragment1 =new HelpFragment();
+        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment1).commit();
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 
 
