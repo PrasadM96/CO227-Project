@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
         public void handleMessage(Message msg) {
             if(msg.what == 0){
                 if(progress < 100){
-                    progress++;
+                    progress=5;
                     ringProgressBar.setProgress(progress);
                 }
             }

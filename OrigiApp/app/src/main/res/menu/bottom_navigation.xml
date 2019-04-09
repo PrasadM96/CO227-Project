@@ -11,10 +11,10 @@
     <item
         android:id="@+id/navi_consumption"
         android:icon="@drawable/ic_attach_money_black"
-        android:title="Monthly" />
+        android:title="Consumption" />
 
     <item
         android:id="@+id/navi_control"
-        android:icon="@drawable/ic_location_city_black"
+        android:icon="@drawable/ic_control_point_black_24dp"
         android:title="Control" />
 </menu>

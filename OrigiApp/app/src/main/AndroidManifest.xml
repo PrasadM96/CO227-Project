@@ -33,7 +33,8 @@
         <activity
             android:name=".HomeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".RealActivity" />
+        <activity android:name=".RealActivity"
+            android:label="Smart Meter"/>
     </application>
 
 </manifest>

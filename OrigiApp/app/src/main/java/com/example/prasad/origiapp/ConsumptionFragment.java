@@ -143,7 +143,7 @@ public class ConsumptionFragment extends Fragment implements OnChartGestureListe
     }
 
     public void drawchart(){
-        dailyChart = (LineChart) fragView.findViewById(R.id.linechart);
+        dailyChart = (LineChart) fragView.findViewById(R.id.dailyChart);
         List<Map<String,String>> myDataList = null;
         GetDailyConsumption getData = new GetDailyConsumption();
         myDataList = getData.getdata();
@@ -198,7 +198,7 @@ public class ConsumptionFragment extends Fragment implements OnChartGestureListe
         yValues.add(new Entry(28,650f));
         yValues.add(new Entry(29,250f));
         yValues.add(new Entry(30,1100f));
-        yValues.add(new Entry(31,1100f));
+        yValues.add(new Entry(31,600f));
 
         LineDataSet set1 = new LineDataSet(yValues,"");
 
