@@ -9,19 +9,25 @@
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:gravity="center"
       android:layout_weight="1"
       android:orientation="vertical">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <AutoCompleteTextView
         android:id="@+id/actv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="25dp"
+        android:layout_margin="30dp"
         android:hint="Your City"
         android:completionThreshold="1"
         android:completionHint="Select a city"
 
         />
-
+  </android.support.design.widget.TextInputLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -41,13 +47,20 @@
         android:paddingLeft="25dp"
         android:paddingRight="25dp"/>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <EditText
         android:id="@+id/edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="28dp"
+        android:layout_margin="30dp"
         android:inputType="phone"
         android:hint="Phone number"/>
+
+  </android.support.design.widget.TextInputLayout>
+
 
   </LinearLayout>
 

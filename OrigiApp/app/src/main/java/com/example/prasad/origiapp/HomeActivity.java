@@ -19,8 +19,15 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements TextWatcher, CompoundButton.OnCheckedChangeListener{
 
     // Declaring layout button, edit texts
     Button login;
@@ -34,10 +41,17 @@ public class HomeActivity extends AppCompatActivity {
     static String seria,passwordd;
     String relay;
     //End Declaring connection variables
+    private CheckBox rem_userpass;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    private static final String PREF_NAME = "prefs";
+    private static final String KEY_REMEMBER = "remember";
+    private static final String KEY_USERNAME = "username";
+    private static final String KEY_PASS = "password";
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
@@ -58,7 +72,57 @@ public class HomeActivity extends AppCompatActivity {
                 checkLogin.execute("");
             }
         });
-        //End Setting up the function when button login is clicked
+        //End Setting up the function when button login is
+
+        sharedPreferences = getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        rem_userpass = (CheckBox)findViewById(R.id.checkBox);
+
+        if(sharedPreferences.getBoolean(KEY_REMEMBER, false))
+            rem_userpass.setChecked(true);
+        else
+            rem_userpass.setChecked(false);
+
+        serial.setText(sharedPreferences.getString(KEY_USERNAME,""));
+        password.setText(sharedPreferences.getString(KEY_PASS,""));
+
+        serial.addTextChangedListener(this);
+        password.addTextChangedListener(this);
+        rem_userpass.setOnCheckedChangeListener(this);
+
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        managePrefs();
+    }
+    @Override
+    public void afterTextChanged(Editable editable) {
+
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        managePrefs();
+    }
+
+    private void managePrefs(){
+        if(rem_userpass.isChecked()){
+            editor.putString(KEY_USERNAME, serial.getText().toString().trim());
+            editor.putString(KEY_PASS, password.getText().toString().trim());
+            editor.putBoolean(KEY_REMEMBER, true);
+            editor.apply();
+        }else{
+            editor.putBoolean(KEY_REMEMBER, false);
+            editor.remove(KEY_PASS);//editor.putString(KEY_PASS,"");
+            editor.remove(KEY_USERNAME);//editor.putString(KEY_USERNAME, "");
+            editor.apply();
+        }
     }
 
     public class CheckLogin extends AsyncTask<String,String,String>

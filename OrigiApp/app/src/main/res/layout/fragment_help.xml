@@ -45,5 +45,12 @@
         android:src="@drawable/control"
         android:layout_gravity="center"
         />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="click"
+            android:layout_gravity="center"
+            android:id="@+id/btn"/>
 </LinearLayout>
 </ScrollView>
