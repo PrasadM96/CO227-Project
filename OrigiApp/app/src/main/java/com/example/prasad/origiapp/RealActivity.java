@@ -79,24 +79,26 @@ public class RealActivity extends AppCompatActivity implements NavigationView.On
     private   BottomNavigationView.OnNavigationItemSelectedListener navListner =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 Fragment selectedFragment=null;
+                String str=null;
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                     switch(menuItem.getItemId()){
                         case R.id.navi_home:
-                            toolbar.setTitle("Home");
+                            str="Home";
                             selectedFragment =new HomeFragment();
                             break;
                         case R.id.navi_consumption:
-                            toolbar.setTitle("Consumption");
+                            str="Consumption";
                             selectedFragment =new ConsumptionFragment();
                             break;
                         case R.id.navi_control:
-                            toolbar.setTitle("Control");
+                            str="Control";
                             selectedFragment =new ControlFragment();
                             break;
 
                     }
 
+                    toolbar.setTitle(str);
                      getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
                     return true;
 
