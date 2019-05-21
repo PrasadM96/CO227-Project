@@ -30,6 +30,9 @@ import android.app.PendingIntent;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.widget.Toast;
+import android.content.Context;
+import android.content.SharedPreferences;
+
 
 
 public class ControlFragment extends Fragment {
@@ -44,6 +47,10 @@ public class ControlFragment extends Fragment {
     private String limiValue=null;
     private Button btn;
     private int warn,limit1;
+    SharedPreferences sharedpreferences;
+    public static final String mypreference = "mypref";
+    public static final String Name = "nameKey";
+    public static final String Email = "emailKey";
 
     @Nullable
     @Override
@@ -58,6 +65,7 @@ public class ControlFragment extends Fragment {
         limit = view.findViewById(R.id.limit);
         btn =view.findViewById(R.id.submitbtn);
 
+        //creating notification channel
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel channel= new NotificationChannel(CHANNEL_ID,CHANNEL_NAME,NotificationManager.IMPORTANCE_DEFAULT);
             channel.setDescription(CHANNEL_DESC);
@@ -65,16 +73,23 @@ public class ControlFragment extends Fragment {
             manager.createNotificationChannel(channel);
         }
 
+        //submit button pressed
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 warningValue=warning.getText().toString();
                 limiValue=limit.getText().toString();
 
-
                 warn = Integer.parseInt("125");
                 limit1 = Integer.parseInt(limiValue);
-              //  Toast.makeText(getContext(),,Toast.LENGTH_SHORT).show();
+
+
+                if(warningValue.matches("[0-9]+") && limiValue.matches("[0-9]+")){
+                    Toast.makeText(getContext(),"Submitted",Toast.LENGTH_SHORT).show();
+                    submit(warningValue,limiValue);
+                }else{
+                    Toast.makeText(getContext(),"Only numbers required",Toast.LENGTH_SHORT).show();
+                }
 
 
             }
@@ -84,6 +99,17 @@ public class ControlFragment extends Fragment {
 
         if(warn<consumption && warn!=0){
             displayNotification("Warning","Reduce usage");
+        }
+
+        //shared preference//
+        sharedpreferences = getActivity().getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
+        if (sharedpreferences.contains(Name)) {
+            warning.setText(sharedpreferences.getString(Name, ""));
+        }
+        if (sharedpreferences.contains(Email)) {
+            limit.setText(sharedpreferences.getString(Email, ""));
+
         }
 
 
@@ -110,4 +136,26 @@ public class ControlFragment extends Fragment {
         NotificationManagerCompat notificationManagerCompat=NotificationManagerCompat.from(getContext());
         notificationManagerCompat.notify(1,nBuilder.build());
     }
+
+
+    //get into shared memory
+   public void submit(String n,String e) {
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString(Name, n);
+        editor.putString(Email, e);
+        editor.commit(); sharedpreferences = getActivity().getSharedPreferences(mypreference,
+                Context.MODE_PRIVATE);
+
+        if (sharedpreferences.contains(Name)) {
+            warning.setText(sharedpreferences.getString(Name, ""));
+        }
+        if (sharedpreferences.contains(Email)) {
+            limit.setText(sharedpreferences.getString(Email, ""));
+
+        }
+
+
+    }
+
+
 }

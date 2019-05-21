@@ -20,6 +20,7 @@
             android:id="@+id/nav_draw_help"
             android:icon="@drawable/ic_help_black_24dp_help"
             android:title="Help" />
+
     </group>
 <!--
     <item android:title="Communicate">

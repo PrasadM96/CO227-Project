@@ -26,23 +26,29 @@ import com.google.android.gms.common.SignInButton;
 import java.util.List;
 import java.util.Map;
 
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
+
 public class RealActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     //Button dailyConsumption,monthlyConsumption;
     //TextView relay_status;
     String relay;
+    private Toolbar toolbar;
+    private BottomNavigationView bottomNavigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_real);
 
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
+        bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListner);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
@@ -68,26 +74,33 @@ public class RealActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+
+
     private   BottomNavigationView.OnNavigationItemSelectedListener navListner =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
+                Fragment selectedFragment=null;
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                    Fragment selectedFragment=null;
-
                     switch(menuItem.getItemId()){
                         case R.id.navi_home:
+                            toolbar.setTitle("Home");
                             selectedFragment =new HomeFragment();
                             break;
                         case R.id.navi_consumption:
+                            toolbar.setTitle("Consumption");
                             selectedFragment =new ConsumptionFragment();
                             break;
                         case R.id.navi_control:
+                            toolbar.setTitle("Control");
                             selectedFragment =new ControlFragment();
                             break;
 
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
+
+                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();
                     return true;
+
+
                 }
             };
     @Override
@@ -115,12 +128,20 @@ public class RealActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_draw_home) {
+            toolbar.setTitle("Home");
+            bottomNavigationView.setVisibility(VISIBLE);
             selectedFragment1 =new HomeFragment();
         } else if (id == R.id.nav_draw_profile) {
+            toolbar.setTitle("Profile");
+            bottomNavigationView.setVisibility(INVISIBLE);
             selectedFragment1 =new ProfileFragment();
         } else if (id == R.id.nav_draw_contact) {
+            toolbar.setTitle("Contact");
+            bottomNavigationView.setVisibility(INVISIBLE);
             selectedFragment1 =new ContactUsFragment();
         } else if (id == R.id.nav_draw_help) {
+            toolbar.setTitle("Help");
+            bottomNavigationView.setVisibility(INVISIBLE);
             selectedFragment1 =new HelpFragment();
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment1).commit();

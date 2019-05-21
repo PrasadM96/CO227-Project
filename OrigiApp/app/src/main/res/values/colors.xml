@@ -13,5 +13,12 @@
     <color name="lightGreen">#76ff03</color>
     <color name="light_grey">#eeeeee</color>
     <color name="black">#070707</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorTransparentWhite">#cccccc</color>
+    <color name="colorTransparentGrey">#aeb0b2</color>
+    <color name="colorGrey">#77787a</color>
+    <color name="colorPrimary1">#262938</color>
+    <color name="colorPrimaryDark1">#181A24</color>
+    <color name="colorAccent1">#FF4081</color>
 
 </resources>
