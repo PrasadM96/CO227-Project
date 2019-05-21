@@ -28,7 +28,7 @@ public class GetRelayStatus {
             else
             {
                 // Change below query according to your own database.
-                String query = "SELECT RelayStatus FROM [DB_A46EC4_ceb].[dbo].[Meter] where MeterSerial = "+HomeActivity.seria+"";
+                String query = "SELECT RelayStatus FROM [DB_A48F31_ceb].[dbo].[Meter] where MeterSerial = "+HomeActivity.seria+"";
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()){

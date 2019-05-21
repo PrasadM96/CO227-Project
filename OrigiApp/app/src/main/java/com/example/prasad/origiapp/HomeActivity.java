@@ -173,7 +173,7 @@ public class HomeActivity extends AppCompatActivity implements TextWatcher, Comp
                     }
                     else
                     {
-                        String query = "SELECT * FROM [DB_A46EC4_ceb].[dbo].[CustomerMeterRelation] where MSerial= '" + seria.toString() + "' and ConsumerAccountNo = '"+ passwordd.toString() +"' ";
+                        String query = "SELECT * FROM [DB_A48F31_ceb].[dbo].[CustomerMeterRelation] where MSerial= '" + seria.toString() + "' and ConsumerAccountNo = '"+ passwordd.toString() +"' ";
                         Statement stmt = con.createStatement();
                         ResultSet rs = stmt.executeQuery(query);
                         if(rs.next())
