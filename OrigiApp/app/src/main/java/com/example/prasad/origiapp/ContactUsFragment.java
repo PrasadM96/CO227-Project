@@ -54,6 +54,7 @@ public class ContactUsFragment extends Fragment implements LocationListener{
     private static final int REQUEST_CALL = 1;
     private EditText meditText;
     private LocationManager locationManager;
+    private TextView locationText;
 
     private static final int MY_PERMISSIONS_REQUEST_COARSE_LOCATION = 1;
     private static final int  MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
@@ -76,10 +77,12 @@ public class ContactUsFragment extends Fragment implements LocationListener{
                              Bundle savedInstanceState){
         // Inflate the layout for this fragment
         View fragview = inflater.inflate(R.layout.fragment_contact_us, container, false);
+        locationText=fragview.findViewById(R.id.locationText);
 
         map =new HashMap<String,String>();
-        map.put("Mirigama","0337910499");
+        map.put("Mirigama","0377910499");
         map.put("Veyangoda","123");
+        map.put("Kandy","0769374789");
 
         //calling
         meditText = fragview.findViewById(R.id.edit_text);
@@ -156,7 +159,7 @@ public class ContactUsFragment extends Fragment implements LocationListener{
 
     @Override
     public void onLocationChanged(Location location) {
-       // locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
+        locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
 
         try {
             Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
@@ -166,7 +169,7 @@ public class ContactUsFragment extends Fragment implements LocationListener{
 
            // locationText.setText(locationText.getText() + "\n"+
                    // addresses.get(0).getLocality());
-            atcv.setText(addresses.get(0).getLocality());
+            atcv.setText(addresses.get(0).getSubAdminArea());
 
         }catch(Exception e)
         {

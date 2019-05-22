@@ -76,6 +76,12 @@
         android:layout_gravity="center"
         android:src="@drawable/phone" />
 
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Hello"
+      android:id="@+id/locationText"/>
+
 </LinearLayout>
 
 

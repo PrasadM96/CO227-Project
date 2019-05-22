@@ -80,7 +80,7 @@ public class ControlFragment extends Fragment {
                 warningValue=warning.getText().toString();
                 limiValue=limit.getText().toString();
 
-                warn = Integer.parseInt("125");
+                warn = Integer.parseInt(warningValue);
                 limit1 = Integer.parseInt(limiValue);
 
 
@@ -91,15 +91,22 @@ public class ControlFragment extends Fragment {
                     Toast.makeText(getContext(),"Only numbers required",Toast.LENGTH_SHORT).show();
                 }
 
+                if(warn<consumption && warn!=0){
+                    displayNotification("Warning","Reduce usage");
+                }
+
 
             }
         });
 
-        warn =100;
+        //
 
-        if(warn<consumption && warn!=0){
-            displayNotification("Warning","Reduce usage");
-        }
+
+
+
+
+
+
 
         //shared preference//
         sharedpreferences = getActivity().getSharedPreferences(mypreference,
@@ -115,6 +122,8 @@ public class ControlFragment extends Fragment {
 
         return view;
     }
+
+
 
     //notification display
     private void displayNotification(String Title,String msg){
