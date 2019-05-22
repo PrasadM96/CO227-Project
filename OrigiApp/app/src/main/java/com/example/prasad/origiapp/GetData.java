@@ -29,7 +29,7 @@ public class GetData {
             else
             {
                 // Change below query according to your own database.
-                String query = "SELECT Month,kWh FROM [DB_A46EC4_ceb].[dbo].[MonthlyConsumptionValidateTable] where MSerial = "+HomeActivity.seria+"";
+                String query = "SELECT Month,kWh FROM [DB_A48F31_ceb].[dbo].[MonthlyConsumptionValidateTable] where MSerial = "+HomeActivity.seria+"";
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()){

@@ -28,7 +28,7 @@ public class GetDailyConsumption {
             else
             {
                 // Change below query according to your own database.
-                String query = "SELECT Date,Consumption FROM [DB_A46EC4_ceb].[dbo].[DailyEnergyConsumption] where MSerial = "+HomeActivity.seria+"";
+                String query = "SELECT Date,Consumption FROM [DB_A48F31_ceb].[dbo].[DailyEnergyConsumption] where MSerial = "+HomeActivity.seria+"";
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()){

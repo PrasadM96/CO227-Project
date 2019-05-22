@@ -28,7 +28,7 @@ public class GetMonthlyConsumption {
             else
             {
                 // Change below query according to your own database.
-                String query = "SELECT Month,kWh FROM [DB_A46EC4_ceb].[dbo].[MonthlyConsumptionValidateTable]";
+                String query = "SELECT Month,kWh FROM [DB_A48F31_ceb].[dbo].[MonthlyConsumptionValidateTable]";
                 Statement stmt = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
                 while (rs.next()){

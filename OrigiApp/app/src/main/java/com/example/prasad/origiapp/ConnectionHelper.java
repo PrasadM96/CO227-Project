@@ -16,9 +16,9 @@ public class ConnectionHelper {
     public Connection connectionclasss()
     {
         // Declaring Server ip, username, database name and password
-        ip = "sql7005.site4now.net";
-        db = "DB_A46EC4_ceb";
-        DBUserNameStr = "DB_A46EC4_ceb_admin";
+        ip = "sql5041.site4now.net";
+        db = "DB_A48F31_ceb";
+        DBUserNameStr = "DB_A48F31_ceb_admin";
         DBPasswordStr = "aab-4962672";
         // Declaring Server ip, username, database name and password
 
