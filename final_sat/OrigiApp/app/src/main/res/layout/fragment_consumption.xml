@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment_consumption"
+    android:background="@color/light_grey">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="25dp">
+
+        <Button
+            android:id="@+id/bdaily"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:text="Daily"
+            android:onClick="daily_graph"
+            android:background="@drawable/rounded_corner_gray"
+            android:layout_marginHorizontal="5dp"
+            />
+
+        <Button
+            android:id="@+id/bweekly"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:onClick="weekly_graph"
+            android:text="weekly"
+            android:background="@drawable/rounded_corner_gray"
+            android:layout_marginHorizontal="5dp"
+            />
+
+        <Button
+            android:id="@+id/bmonthly"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:text="monthly"
+            android:onClick="monthly_graph"
+            android:background="@drawable/rounded_corner_gray"
+            android:layout_marginHorizontal="5dp"
+            />
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+    <com.github.mikephil.charting.charts.LineChart
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/dailyChart"
+        android:layout_marginBottom="125dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        >
+
+    </com.github.mikephil.charting.charts.LineChart>
+
+
+</LinearLayout>
