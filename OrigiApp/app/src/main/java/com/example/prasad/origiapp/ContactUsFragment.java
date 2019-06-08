@@ -82,11 +82,10 @@ public class ContactUsFragment extends Fragment implements LocationListener{
         map =new HashMap<String,String>();
         map.put("Mirigama","0377910499");
         map.put("Veyangoda","123");
-<<<<<<< HEAD
         map.put("Kandy","0769374789");
-=======
+
         map.put("Kandy","09876545");
->>>>>>> 6af53d1bb4190ed214928204d904ccdf7f5efd73
+
 
         //calling
         meditText = fragview.findViewById(R.id.edit_text);
@@ -163,11 +162,11 @@ public class ContactUsFragment extends Fragment implements LocationListener{
 
     @Override
     public void onLocationChanged(Location location) {
-<<<<<<< HEAD
+
         locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
-=======
+
       // locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
->>>>>>> 6af53d1bb4190ed214928204d904ccdf7f5efd73
+
 
         try {
             Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
