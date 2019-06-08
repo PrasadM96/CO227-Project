@@ -3,10 +3,14 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+<<<<<<< HEAD
         <compositeConfiguration>
           <compositeBuild compositeDefinitionSource="SCRIPT" />
         </compositeConfiguration>
         <option name="distributionType" value="LOCAL" />
+=======
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+>>>>>>> 6af53d1bb4190ed214928204d904ccdf7f5efd73
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="/opt/gradle/gradle-5.4.1" />
         <option name="modules">

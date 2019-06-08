@@ -1,50 +1,303 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HelpFragment"
-    >
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:background="@null"
-        android:text="Next" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:background="@null"
-        android:text="Previous"
-        android:visibility="invisible"
-         />
-
-    <android.support.v4.view.ViewPager
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/slideViewPager"
-       >
-    </android.support.v4.view.ViewPager>
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/dotsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
-        android:orientation="horizontal"
-        android:gravity="center">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="10dp"
+            android:weightSum="6"
+            android:paddingBottom="10dp"
+            android:id="@+id/l2"
+            >
+
+            <LinearLayout
+                android:orientation="horizontal"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_weight="20"
+                android:paddingHorizontal="10dp"
+                android:background="@drawable/rounded_corner"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Home"
+                    android:gravity="center_vertical"
+                    android:layout_weight="19"
+                    android:textColor="#000000"
+                    android:paddingBottom="10dp"/>
+
+                <ImageButton
+                    android:id="@+id/mybtn1"
+                    style="?buttonBarButtonStyle"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="10dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:shadowColor="#959597"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="1"
+
+                    android:textColor="#ffffff"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    />
 
 
-    </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/myTextView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Home screen is the first to appear when the application is opened.&#xA;&#xA;The circle&#xA;The circle in the top of the interface shows the Monthly Consumtion(electricity usage in a month),Relay status(Current is available to your place or not)...&#xA;Relay Status is more useful when you are away from home...Before you come to the home,you can knoe if thre currnet is available or not...&#xA;&#xA;Electricity Usage&#xA;Under the circle you can see the electricity usage of Daily,Weekly and Monthly..&#xA;&#xA;Compared to Past Usage&#xA;In next box, you can see the Electricity Usage compared to the past usage and predicated future usage from the past and presnet usage...&#xA;&#xA;Bottom Navigation&#xA;By bottom navigation you can switch to the interfaces Home,Consumption and Control..&#xA;&#xA;Navigation Drawer&#xA;You can switch to the Home,Profile,Contact Us,About Us and Help interfaces.."           android:paddingBottom="15dp"
+                android:visibility="gone"
+                />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_weight="20"
+                android:paddingHorizontal="10dp"
+                android:background="@drawable/rounded_corner">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Consumption"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical"
+                    android:layout_weight="19"/>
+
+                <ImageButton
+                    android:id="@+id/mybtn2"
+                    style="?buttonBarButtonStyle"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="10dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:shadowColor="#959597"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="1"
+
+                    android:textColor="#ffffff"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    />
 
 
-</RelativeLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/myTextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="You can switch to the Consumption Interface by the bottom navigation..&#xA;&#xA;Daily&#xA;By Daily tag you can see the graph of daily consumption of the month...&#xA;&#xA;Weekly&#xA;By Weekly tag you can see the consumption of the four weeks of the month...&#xA;&#xA;Monthly&#xA;By Monthly tag  you can see the graph of the consumption of the year monthly.."
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_weight="20"
+                android:paddingHorizontal="10dp"
+                android:background="@drawable/rounded_corner">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Control"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical"
+                    android:layout_weight="19"/>
+
+                <ImageButton
+                    android:id="@+id/mybtn3"
+                    style="?buttonBarButtonStyle"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="10dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:shadowColor="#959597"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="1"
+
+                    android:textColor="#ffffff"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    />
+
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/myTextView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="You can switch to this Control Interface by the bottom navigation...&#xA;&#xA;In here there is table including Warning and Limit..&#xA;&#xA;Warning&#xA;In here you can set a value for the Warning.If the value of the bill exceeds the warning vaue,you are inoformed by a notification...&#xA;&#xA;Limit&#xA;In here you can set the value for the limit.If the value of the  bill exceeds the limit,You are informed by a notification also..&#xA;&#xA;By setting the value of limit and warning,You are informed by notifications from value of limit to value of warning.."
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_weight="20"
+                android:paddingHorizontal="10dp"
+                android:background="@drawable/rounded_corner">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Profile"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical"
+                    android:layout_weight="19"/>
+
+                <ImageButton
+                    android:id="@+id/mybtn4"
+                    style="?buttonBarButtonStyle"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="10dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:shadowColor="#959597"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="1"
+
+                    android:textColor="#ffffff"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    />
+
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/myTextView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="In this interface you can see the profile...&#xA;&#xA;Personal Infomation&#xA;In this intrface displays the personal infomations like Name,Adderess,Location,Email and Telephone number..&#xA;&#xA;Meter Information&#xA;Other than personal information,this interface shows the Meter Informations like Consumer Number,Meter Number,Meter face,Consumer Type,Ols merter Number and Payment Type.."
+                android:visibility="gone"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_weight="20"
+                android:paddingHorizontal="10dp"
+                android:background="@drawable/rounded_corner">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Contact Us"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical"
+                    android:layout_weight="19"/>
+
+                <ImageButton
+                    android:id="@+id/mybtn5"
+                    style="?buttonBarButtonStyle"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="10dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:shadowColor="#959597"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="1"
+
+                    android:textColor="#ffffff"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/myTextView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="By using this interface you can contact us...&#xA;&#xA;Using this interface you can search the appropriate Area Manager according to our location..You can get the location by the google map and get the Telephone Numbers od the suitable Area Managers..&#xA;&#xA;If you are in out of your loacation,If you want to know the Area Manager's telephone number in the location now you are in,You can get the telephone number using this option..."
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_weight="20"
+                android:paddingHorizontal="10dp"
+                android:background="@drawable/rounded_corner">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="About Us"
+                    android:textColor="#000000"
+                    android:gravity="center_vertical"
+                    android:layout_weight="19"/>
+
+                <ImageButton
+                    android:id="@+id/mybtn6"
+                    style="?buttonBarButtonStyle"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="10dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:shadowColor="#959597"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="1"
+
+                    android:textColor="#ffffff"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/myTextView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="By this Interface you can know some details abou the CEB...&#xA;&#xA;Facebook&#xA;Twitter&#xA;Instagram&#xA;Email&#xA;Web&#xA;These links are in this interface..&#xA;&#xA;Description&#xA;In here there is a small description about CEB history and present.."
+                android:visibility="gone"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

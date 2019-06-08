@@ -91,6 +91,7 @@ public class RealActivity extends AppCompatActivity implements NavigationView.On
                             str="Consumption";
                             selectedFragment =new ConsumptionFragment();
                             break;
+
                         case R.id.navi_control:
                             str="Control";
                             selectedFragment =new ControlFragment();
@@ -145,6 +146,11 @@ public class RealActivity extends AppCompatActivity implements NavigationView.On
             toolbar.setTitle("Help");
             bottomNavigationView.setVisibility(INVISIBLE);
             selectedFragment1 =new HelpFragment();
+        }
+        else if (id == R.id.nav_draw_about_us) {
+            toolbar.setTitle("About Us");
+            bottomNavigationView.setVisibility(INVISIBLE);
+            selectedFragment1 = new AboutUsFragment();
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment1).commit();
 

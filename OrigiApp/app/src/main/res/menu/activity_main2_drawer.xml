@@ -17,6 +17,10 @@
             android:icon="@drawable/ic_local_phone_black_24dp_navi"
             android:title="Contact Us" />
         <item
+            android:id="@+id/nav_draw_about_us"
+            android:icon="@drawable/ic_priority_high_black_24dp"
+            android:title="About Us" />
+        <item
             android:id="@+id/nav_draw_help"
             android:icon="@drawable/ic_help_black_24dp_help"
             android:title="Help" />
