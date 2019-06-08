@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="240dp"
-            android:background="@color/colorPrimary"
+            android:background="#d9d9d9"
             android:orientation="vertical">
 
             <ImageView
@@ -54,65 +54,73 @@
 
             android:layout_centerHorizontal="true"
             android:layout_marginTop="210dp">
+<android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="4dp"
+    android:background="#ffffff"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="6dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="3">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="3">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/fb_btn"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/facebook3" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/insta"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/insta" />
+            <ImageButton
+                android:id="@+id/fb_btn"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="@drawable/facebook3" />
 
 
-                </LinearLayout>
+        </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-                    <ImageButton
-                        android:id="@+id/twit"
-                        android:layout_width="80dp"
+            <ImageButton
+                android:id="@+id/insta"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:background="@drawable/insta" />
 
-                        android:layout_height="80dp"
-                        android:layout_gravity="center"
-                        android:background="@drawable/twitter2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/twit"
+                android:layout_width="80dp"
+
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:background="@drawable/twitter2" />
 
 
-                </LinearLayout>
-            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
 
         </android.support.v7.widget.CardView>
     </RelativeLayout>
@@ -145,6 +153,7 @@
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:text="sandushidileka2@gmail.com"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -154,6 +163,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal"
             android:paddingLeft="25dp">
 
@@ -170,6 +180,7 @@
                 android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
                 android:autoLink="all"
+                android:textColor="@color/colorPrimary"
                 android:text="https://www.facebook.com/sandushi.dileka"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -178,8 +189,8 @@
     </LinearLayout>
 
     <ScrollView
-        android:layout_width="360dp"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="360dp"
             android:layout_height="50dp"
@@ -188,17 +199,23 @@
             android:layout_marginTop="25dp"
             android:orientation="vertical">
 
-
-            <TextView
-                android:layout_width="wrap_content"
-
-
-                android:layout_height="wrap_content"
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
                 android:layout_gravity="center_vertical"
-                android:paddingLeft="20dp"
+                android:layout_marginBottom="4dp"
+                app:cardCornerRadius="3dp"
+                android:elevation="6dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="khdjsfhdsjvmbdjshcalkcb,  jsahcmsd,l.kdhskckjd,s msmndkcjdsmndkjs,bccs hdjkdsvbdsmnvb  jskhjkdwmsbkz jhdjsjnb dnvjfdnvbsmdhvs smhdhfjsdvhfkdhx dhhdsjvhjfhv wjhdfjesdmhvbkdk hdjdshvsdm khdjesdhvjdfb wmndhjesdvbcsdnm  jksahdjsdbncjsdmnb jsdhbhjchdsbc nmn  hhjvbfvbdnvbjdd fbvjfvbjkfdfcdfhvjfjkvhfjkv bvjkfdhvjfkvhfjvhhvjfhvjfvhjfhv fbvkvjfdhvkjefhvjkfdhv bnvvjfhvjfkhvjfd jhfejhvfjkvfjk jhvhjvfhvjkfhvjkfb jhrfhekjvhkdj v jvjvhrjkvv jefvkjfvjkdfb jffkjvjkvvnn fjkhvjkfvnfd jhvjdvfd jkhfnjefhvjk jfhejhvkjfv bjfjvfkdvbfd bfjfvbjfdb jkvfkjdvhvfb jfvhfdjvhh "
+                    android:textStyle="bold" />
+            </android.support.v7.widget.CardView>
 
-                android:text="khdjsfhdsjvmbdjshcalkcb,  jsahcmsd,l.kdhskckjd,s msmndkcjdsmndkjs,bccs hdjkdsvbdsmnvb  jskhjkdwmsbkz jhdjsjnb dnvjfdnvbsmdhvs smhdhfjsdvhfkdhx dhhdsjvhjfhv wjhdfjesdmhvbkdk hdjdshvsdm khdjesdhvjdfb wmndhjesdvbcsdnm  jksahdjsdbncjsdmnb jsdhbhjchdsbc nmn  hhjvbfvbdnvbjdd fbvjfvbjkfdfcdfhvjfjkvhfjkv bvjkfdhvjfkvhfjvhhvjfhvjfvhjfhv fbvkvjfdhvkjefhvjkfdhv bnvvjfhvjfkhvjfd jhfejhvfjkvfjk jhvhjvfhvjkfhvjkfb jhrfhekjvhkdj v jvjvhrjkvv jefvkjfvjkdfb jffkjvjkvvnn fjkhvjkfvnfd jhvjdvfd jkhfnjefhvjk jfhejhvkjfv bjfjvfkdvbfd bfjfvbjfdb jkvfkjdvhvfb jfvhfdjvhh "
-                android:textStyle="bold" />
 
         </LinearLayout>
     </ScrollView>
