@@ -5,18 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-
+    android:weightSum="3"
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:background="#d9d9d9"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="3">
 
             <ImageView
                 android:layout_width="118dp"
@@ -196,7 +197,7 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical">
 
             <android.support.v7.widget.CardView
