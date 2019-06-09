@@ -1,5 +1,6 @@
 package com.example.prasad.origiapp;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
@@ -35,6 +36,7 @@ import android.content.SharedPreferences;
 
 
 
+@SuppressLint("ValidFragment")
 public class ControlFragment extends Fragment {
 
 
@@ -45,11 +47,15 @@ public class ControlFragment extends Fragment {
     private String limiValue=null;
     private Button btn;
     private int warn,limit1;
+    private int meterNo;
     SharedPreferences sharedpreferences;
     public static final String mypreference = "mypref";
     public static final String Name = "nameKey";
     public static final String Email = "emailKey";
 
+    public ControlFragment(String MeterNo){
+        this.meterNo = Integer.parseInt(MeterNo);
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -115,6 +121,7 @@ public class ControlFragment extends Fragment {
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString(Name, n);
         editor.putString(Email, e);
+        InsertData insertData = new InsertData(meterNo,Integer.parseInt(n),Integer.parseInt(e));
         editor.commit(); sharedpreferences = getActivity().getSharedPreferences(mypreference,
                 Context.MODE_PRIVATE);
 
