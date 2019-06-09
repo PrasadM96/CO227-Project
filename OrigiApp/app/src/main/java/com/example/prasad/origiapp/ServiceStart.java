@@ -24,7 +24,7 @@ public class ServiceStart extends Service {
     private static final String CHANNEL_NAME="Simplified_coding";
     private static final String CHANNEL_DESC="Simplified_coding Notification";
     private int warn;
-    private int consumption;
+    private Double consumption;
     Connection connect;
     String ConnectionResult = "";
     Boolean isSuccess = false;
@@ -32,7 +32,7 @@ public class ServiceStart extends Service {
     @Override
     public void onCreate() {
         warn=0;
-        consumption=0;
+        consumption=0.0;
         //creating notification channel
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel channel= new NotificationChannel(CHANNEL_ID,CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
@@ -45,7 +45,7 @@ public class ServiceStart extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Toast.makeText(this,"Started",Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,"Started",Toast.LENGTH_LONG).show();
         checkWarning();
         return START_STICKY;
     }
@@ -93,28 +93,29 @@ public class ServiceStart extends Service {
                 ConnectionResult = "Check Your Internet Access!";
             }
             else {
-                Toast.makeText(this,"fsfsf",Toast.LENGTH_LONG).show();
+               // Toast.makeText(this,"fsfsf",Toast.LENGTH_LONG).show();
 
-                String query = "SELECT Warning FROM [DB_A48F31_ceb].[dbo].[MeterWarning] where MSerial = " +Integer.parseInt(HomeActivity.seria)+ "";
+                String query = "SELECT Warning FROM [DB_A48F31_ceb].[dbo].[MeterWarning] WHERE MSerial = " +Integer.parseInt(HomeActivity.seria)+ "";
                 String query2 = "SELECT kWh FROM [DB_A48F31_ceb].[dbo].[MonthlyConsumptionValidateTable] where MSerial = "+Integer.parseInt(HomeActivity.seria)+"";
                 Statement stmt = connect.createStatement();
-                Statement stmt2 = connect.createStatement();
                 ResultSet rs = stmt.executeQuery(query);
+                Statement stmt2 = connect.createStatement();
                 ResultSet rs2 =stmt2.executeQuery(query2);
 
-
-                warn=Integer.parseInt(rs.getString("Warning"));
-                consumption=Integer.parseInt(rs2.getString("kWh"));
-
-
-                if(consumption>warn){
-                    displayNotification("Warning","Reduce usage");
+                if(rs2.next() && rs.next()){
+                    warn=Integer.parseInt(rs.getString("Warning"));
+                    consumption=Double.parseDouble(rs2.getString("kWh"));
+                    if(consumption>warn){
+                        displayNotification("Warning","Reduce usage");
+                        Toast.makeText(this,"ok "+warn+" "+consumption,Toast.LENGTH_LONG).show();
+                    }
+                }else {
+                    Toast.makeText(this,"Error",Toast.LENGTH_LONG).show();
                 }
 
                 ConnectionResult = " successful";
                 isSuccess=true;
                 connect.close();
-                Toast.makeText(this,String.valueOf(warn),Toast.LENGTH_LONG).show();
 
             }
         }catch (Exception ex){
