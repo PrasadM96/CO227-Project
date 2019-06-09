@@ -103,7 +103,7 @@ public class RealActivity extends AppCompatActivity implements NavigationView.On
 
                         case R.id.navi_control:
                             str="Control";
-                            selectedFragment =new ControlFragment();
+                            selectedFragment =new ControlFragment(MeterNo);
                             break;
 
                     }
