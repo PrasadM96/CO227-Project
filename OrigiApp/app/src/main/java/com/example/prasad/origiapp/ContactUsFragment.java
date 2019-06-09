@@ -83,6 +83,11 @@ public class ContactUsFragment extends Fragment implements LocationListener{
         map.put("Mirigama","0377910499");
         map.put("Veyangoda","123");
         map.put("Kandy","0769374789");
+
+
+        map.put("Kandy","09876545");
+
+
         map.put("Kandy","09876545");
 
         //calling
@@ -160,6 +165,13 @@ public class ContactUsFragment extends Fragment implements LocationListener{
 
     @Override
     public void onLocationChanged(Location location) {
+
+
+        locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
+
+      // locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
+
+
         locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
       // locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
 
