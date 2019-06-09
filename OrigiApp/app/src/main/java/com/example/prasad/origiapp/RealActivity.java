@@ -33,9 +33,10 @@ public class RealActivity extends AppCompatActivity implements NavigationView.On
 
     //Button dailyConsumption,monthlyConsumption;
     //TextView relay_status;
-    String relay;
+    String relay,ConsumerNo,MeterNo,monthlyConsumption,relayStatus;
     private Toolbar toolbar;
     private BottomNavigationView bottomNavigationView;
+    private HomeFragment homeFragment;
 
 
     @Override
@@ -43,10 +44,18 @@ public class RealActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_real);
 
+        Intent in = getIntent();
+        ConsumerNo = in.getStringExtra("ConsumerNo");
+        MeterNo = in.getStringExtra("MeterNo");
+        monthlyConsumption = in.getStringExtra("monthlyConsumption");
+        relayStatus = in.getStringExtra("relayStatus");
+
+        homeFragment=new HomeFragment(monthlyConsumption,relayStatus);
+
         bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListner);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,homeFragment).commit();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -85,7 +94,7 @@ public class RealActivity extends AppCompatActivity implements NavigationView.On
                     switch(menuItem.getItemId()){
                         case R.id.navi_home:
                             str="Home";
-                            selectedFragment =new HomeFragment();
+                            selectedFragment =homeFragment;
                             break;
                         case R.id.navi_consumption:
                             str="Consumption";
@@ -133,11 +142,11 @@ public class RealActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_draw_home) {
             toolbar.setTitle("Home");
             bottomNavigationView.setVisibility(VISIBLE);
-            selectedFragment1 =new HomeFragment();
+            selectedFragment1 = homeFragment;
         } else if (id == R.id.nav_draw_profile) {
             toolbar.setTitle("Profile");
             bottomNavigationView.setVisibility(INVISIBLE);
-            selectedFragment1 =new ProfileFragment();
+            selectedFragment1 =new ProfileFragment(ConsumerNo,MeterNo);
         } else if (id == R.id.nav_draw_contact) {
             toolbar.setTitle("Contact");
             bottomNavigationView.setVisibility(INVISIBLE);

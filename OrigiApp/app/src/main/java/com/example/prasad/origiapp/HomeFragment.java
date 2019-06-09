@@ -1,5 +1,6 @@
 package com.example.prasad.origiapp;
 
+import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,9 +23,9 @@ import io.netopen.hotbitmapgg.library.view.RingProgressBar;
 
 public class HomeFragment extends Fragment {
 
-    TextView relay_status,consumption,usage1,current,last,projected;
+    TextView relay_status,consumption,usage1,usage2,usage3,current,last,projected;
     RingProgressBar ringProgressBar;
-    String monthlyConsumption;
+    String monthlyConsumption,relayStatus;
 
     int limit = 1000;
     //int value = (Integer.parseInt(monthlyConsumption)/limit)*100;
@@ -41,6 +42,15 @@ public class HomeFragment extends Fragment {
         }
     };
 
+    public HomeFragment(){
+
+    }
+
+    @SuppressLint("ValidFragment")
+    public HomeFragment(String monthlyConsumption, String relayStatus){
+        this.monthlyConsumption=monthlyConsumption;
+        this.relayStatus=relayStatus;
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,6 +63,8 @@ public class HomeFragment extends Fragment {
         projected = (TextView) view.findViewById(R.id.textView5);
         ringProgressBar = (RingProgressBar) view.findViewById(R.id.progress_bar);
         usage1 = (TextView) view.findViewById(R.id.usage1);
+        usage2 = (TextView) view.findViewById(R.id.usage2);
+        usage3 = (TextView) view.findViewById(R.id.usage3);
         /*ringProgressBar.setOnProgressListener(new RingProgressBar.OnProgressListener()
         {
 
@@ -64,7 +76,7 @@ public class HomeFragment extends Fragment {
             }
         });*/
 
-        List<Map<String,String>> myDataList1 = null;
+        /*List<Map<String,String>> myDataList1 = null;
         GetMonthlyConsumption getMonthlyConsumption = new GetMonthlyConsumption();
         myDataList1 = getMonthlyConsumption.getdata();
 
@@ -73,8 +85,8 @@ public class HomeFragment extends Fragment {
         List<Map<String,String>> myDataList2 = null;
         GetRelayStatus getData = new GetRelayStatus();
         myDataList2 = getData.getdata();
-        String a=myDataList2.get(0).values().toString();
-        if(a.equals("[1]")){
+        String a=myDataList2.get(0).values().toString();*/
+        if(relayStatus.equals("[1]")){
             relay_status.setText("Relay Status : ON");
             consumption.setText(monthlyConsumption+" kWh");
         }else{
@@ -82,7 +94,9 @@ public class HomeFragment extends Fragment {
             consumption.setText(monthlyConsumption+" kWh");
         }
 
-        usage1.setText("Total Usage:    "+monthlyConsumption+"     |     Load: 0.09kw      |     P.F:   1.00");
+        usage1.setText(" Total Usage:    "+monthlyConsumption);
+        usage2.setText("Load: 0.09kw");
+        usage3.setText("P.F:   1.00 ");
         current.setText(monthlyConsumption);
         last.setText(monthlyConsumption);
         projected.setText(monthlyConsumption);

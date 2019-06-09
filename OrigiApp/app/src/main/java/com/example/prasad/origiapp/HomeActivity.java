@@ -19,6 +19,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
+import java.util.Map;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.Editable;
@@ -39,7 +42,7 @@ public class HomeActivity extends AppCompatActivity implements TextWatcher, Comp
     Connection con;
     String un,pass,db,ip;
     static String seria,passwordd;
-    String relay;
+    String relay,monthlyConsumption;
     //End Declaring connection variables
     private CheckBox rem_userpass;
     SharedPreferences sharedPreferences;
@@ -181,6 +184,21 @@ public class HomeActivity extends AppCompatActivity implements TextWatcher, Comp
                             z = "Login successful";
                             isSuccess=true;
                             Intent homeIntent =new Intent(HomeActivity.this,RealActivity.class);
+                            homeIntent.putExtra("ConsumerNo",passwordd);
+                            homeIntent.putExtra("MeterNo",seria);
+                            List<Map<String,String>> myDataList1 = null;
+                            GetMonthlyConsumption getMonthlyConsumption = new GetMonthlyConsumption();
+                            myDataList1 = getMonthlyConsumption.getdata();
+
+                            monthlyConsumption = (String)myDataList1.get(0).values().toArray()[0];
+                            homeIntent.putExtra("monthlyConsumption",monthlyConsumption);
+
+                            List<Map<String,String>> myDataList2 = null;
+                            GetRelayStatus getData = new GetRelayStatus();
+                            myDataList2 = getData.getdata();
+                            String a=myDataList2.get(0).values().toString();
+                            homeIntent.putExtra("relayStatus",a);
+
                             startActivity(homeIntent);
                             finish();
                             con.close();
