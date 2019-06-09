@@ -13,14 +13,26 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.widget.Toast;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+
 public class ServiceStart extends Service {
 
     private static final String CHANNEL_ID="Simplified_coding";
     private static final String CHANNEL_NAME="Simplified_coding";
     private static final String CHANNEL_DESC="Simplified_coding Notification";
+    private int warn;
+    private int consumption;
+    Connection connect;
+    String ConnectionResult = "";
+    Boolean isSuccess = false;
 
     @Override
     public void onCreate() {
+        warn=0;
+        consumption=0;
         //creating notification channel
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             NotificationChannel channel= new NotificationChannel(CHANNEL_ID,CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
@@ -34,9 +46,10 @@ public class ServiceStart extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Toast.makeText(this,"Started",Toast.LENGTH_LONG).show();
-        displayNotification("Reduce","usage");
+        checkWarning();
         return START_STICKY;
     }
+
 
     @Override
     public void onDestroy() {
@@ -67,4 +80,48 @@ public class ServiceStart extends Service {
         NotificationManagerCompat notificationManagerCompat=NotificationManagerCompat.from(getApplicationContext());
         notificationManagerCompat.notify(1,nBuilder.build());
     }
+
+
+    ////////////////////////////////////////////////
+    private void checkWarning() {
+        try
+        {
+            ConnectionHelper conStr=new ConnectionHelper();
+            connect =conStr.connectionclasss();        // Connect to database
+            if (connect == null)
+            {
+                ConnectionResult = "Check Your Internet Access!";
+            }
+            else {
+                Toast.makeText(this,"fsfsf",Toast.LENGTH_LONG).show();
+
+                String query = "SELECT Warning FROM [DB_A48F31_ceb].[dbo].[MeterWarning] where MSerial = " +Integer.parseInt(HomeActivity.seria)+ "";
+                String query2 = "SELECT kWh FROM [DB_A48F31_ceb].[dbo].[MonthlyConsumptionValidateTable] where MSerial = "+Integer.parseInt(HomeActivity.seria)+"";
+                Statement stmt = connect.createStatement();
+                Statement stmt2 = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                ResultSet rs2 =stmt2.executeQuery(query2);
+
+
+                warn=Integer.parseInt(rs.getString("Warning"));
+                consumption=Integer.parseInt(rs2.getString("kWh"));
+
+
+                if(consumption>warn){
+                    displayNotification("Warning","Reduce usage");
+                }
+
+                ConnectionResult = " successful";
+                isSuccess=true;
+                connect.close();
+                Toast.makeText(this,String.valueOf(warn),Toast.LENGTH_LONG).show();
+
+            }
+        }catch (Exception ex){
+            Toast.makeText(this,ex.toString(),Toast.LENGTH_LONG).show();
+            isSuccess = false;
+            ConnectionResult = ex.getMessage();
+        }
+    }
+
 }
