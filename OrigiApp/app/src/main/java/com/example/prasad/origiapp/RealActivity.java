@@ -70,6 +70,9 @@ public class RealActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Intent intent=new Intent(this,ServiceStart.class);
+        startService(intent);
     }
 
     @Override

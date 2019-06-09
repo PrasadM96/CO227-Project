@@ -37,9 +37,7 @@ import android.content.SharedPreferences;
 
 public class ControlFragment extends Fragment {
 
-    private static final String CHANNEL_ID="Simplified_coding";
-    private static final String CHANNEL_NAME="Simplified_coding";
-    private static final String CHANNEL_DESC="Simplified_coding Notification";
+
     private EditText warning;
     private EditText limit;
     private int consumption;
@@ -65,13 +63,6 @@ public class ControlFragment extends Fragment {
         limit = view.findViewById(R.id.limit);
         btn =view.findViewById(R.id.submitbtn);
 
-        //creating notification channel
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            NotificationChannel channel= new NotificationChannel(CHANNEL_ID,CHANNEL_NAME,NotificationManager.IMPORTANCE_DEFAULT);
-            channel.setDescription(CHANNEL_DESC);
-            NotificationManager manager=getContext().getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(channel);
-        }
 
         //submit button pressed
         btn.setOnClickListener(new View.OnClickListener() {
@@ -90,12 +81,6 @@ public class ControlFragment extends Fragment {
                 }else{
                     Toast.makeText(getContext(),"Only numbers required",Toast.LENGTH_SHORT).show();
                 }
-
-                if(warn<consumption && warn!=0){
-                    displayNotification("Warning","Reduce usage");
-                }
-
-
             }
         });
 
@@ -123,28 +108,6 @@ public class ControlFragment extends Fragment {
         return view;
     }
 
-
-
-    //notification display
-    private void displayNotification(String Title,String msg){
-        Intent intent = new Intent(getContext(), HomeActivity.class); // Here pass your activity where you want to redirect.
-
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        PendingIntent contentIntent = PendingIntent.getActivity(getContext(), (int) (Math.random() * 100), intent, 0);
-
-        NotificationCompat.Builder nBuilder =
-                new NotificationCompat.Builder(getContext(),CHANNEL_ID)
-                        .setSmallIcon(R.drawable.app)
-                        .setContentTitle(Title)
-                        .setContentText(msg)
-                        .setAutoCancel(true)
-                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                        .setDefaults(Notification.FLAG_AUTO_CANCEL | Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE | Notification.DEFAULT_SOUND)
-                        .setContentIntent(contentIntent);
-
-        NotificationManagerCompat notificationManagerCompat=NotificationManagerCompat.from(getContext());
-        notificationManagerCompat.notify(1,nBuilder.build());
-    }
 
 
     //get into shared memory

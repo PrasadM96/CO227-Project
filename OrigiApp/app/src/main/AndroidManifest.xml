@@ -44,6 +44,8 @@
             android:label="Smart Meter"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <service android:name=".ServiceStart"
+            android:exported="false"></service>
     </application>
 
 </manifest>
