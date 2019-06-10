@@ -182,6 +182,7 @@
                     android:layout_width="35dp"
                     android:layout_height="wrap_content"
                     android:text="Current"
+                    android:textColor="@color/black"
                     android:id="@+id/text3"
                     android:textSize="10dp"
                     android:layout_weight="0.15"/>
@@ -189,6 +190,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/materialYello"
+                    android:textColor="@color/black"
                     android:text=""
                     android:id="@+id/textView3"
                     android:textSize="10dp"
@@ -213,6 +215,7 @@
                 <TextView
                     android:layout_width="35dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Last"
                     android:id="@+id/text4"
                     android:textSize="10dp"
@@ -221,6 +224,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/lightGreen"
+                    android:textColor="@color/black"
                     android:text=""
                     android:id="@+id/textView4"
                     android:textSize="10dp"
@@ -244,6 +248,7 @@
                 <TextView
                     android:layout_width="35dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="Projected"
                     android:id="@+id/text5"
                     android:textSize="10dp"
@@ -252,6 +257,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/materialGray"
+                    android:textColor="@color/black"
                     android:text=""
                     android:id="@+id/textView5"
                     android:textSize="10dp"

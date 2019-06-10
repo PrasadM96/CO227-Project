@@ -23,7 +23,7 @@ public class ServiceStart extends Service {
     private static final String CHANNEL_ID="Simplified_coding";
     private static final String CHANNEL_NAME="Simplified_coding";
     private static final String CHANNEL_DESC="Simplified_coding Notification";
-    private int warn;
+    private Double warn;
     private Double consumption;
     Connection connect;
     String ConnectionResult = "";
@@ -31,7 +31,7 @@ public class ServiceStart extends Service {
 
     @Override
     public void onCreate() {
-        warn=0;
+        warn=0.0;
         consumption=0.0;
         //creating notification channel
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -103,11 +103,11 @@ public class ServiceStart extends Service {
                 ResultSet rs2 =stmt2.executeQuery(query2);
 
                 if(rs2.next() && rs.next()){
-                    warn=Integer.parseInt(rs.getString("Warning"));
+                    warn=Double.parseDouble(rs.getString("Warning"));
                     consumption=Double.parseDouble(rs2.getString("kWh"));
                     if(consumption>warn){
                         displayNotification("Warning","Reduce usage");
-                        Toast.makeText(this,"ok "+warn+" "+consumption,Toast.LENGTH_LONG).show();
+                        //Toast.makeText(this,"ok "+warn+" "+consumption,Toast.LENGTH_LONG).show();
                     }
                 }else {
                     Toast.makeText(this,"Error",Toast.LENGTH_LONG).show();

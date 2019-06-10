@@ -3,6 +3,7 @@ package com.example.prasad.origiapp;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -74,19 +75,31 @@ public class ControlFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                warningValue=warning.getText().toString();
-                limiValue=limit.getText().toString();
+                try{
+                    warningValue=warning.getText().toString();
+                    limiValue=limit.getText().toString();
 
-                warn = Integer.parseInt(warningValue);
-                limit1 = Integer.parseInt(limiValue);
+                    warn = Integer.parseInt(warningValue);
+                    limit1 = Integer.parseInt(limiValue);
 
 
-                if(warningValue.matches("[0-9]+") && limiValue.matches("[0-9]+")){
-                    Toast.makeText(getContext(),"Submitted",Toast.LENGTH_SHORT).show();
-                    submit(warningValue,limiValue);
-                }else{
-                    Toast.makeText(getContext(),"Only numbers required",Toast.LENGTH_SHORT).show();
+                    if(warningValue.matches("[0-9]+") && limiValue.matches("[0-9]+")){
+                        Toast toast2 = Toast.makeText(getContext() , "Submitted" , Toast.LENGTH_LONG);
+                        TextView v2 = (TextView) toast2.getView().findViewById(android.R.id.message);
+                        v2.setTextColor(Color.GREEN);
+                        toast2.show();
+                        submit(warningValue,limiValue);
+                    }else{
+                        Toast.makeText(getContext(),"Only numbers required",Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+                    //Toast.makeText(getContext(),"Only numbers required",Toast.LENGTH_SHORT).show();
+                    Toast toast2 = Toast.makeText(getContext() , "Only numbers required" , Toast.LENGTH_LONG);
+                    TextView v2 = (TextView) toast2.getView().findViewById(android.R.id.message);
+                    v2.setTextColor(Color.RED);
+                    toast2.show();
                 }
+
             }
         });
 

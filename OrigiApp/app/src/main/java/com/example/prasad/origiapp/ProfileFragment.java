@@ -44,7 +44,7 @@ public class ProfileFragment extends Fragment {
         meterNo.setText(MeterNo);
         mail.setText("sandushidileka2@gmail.com");
         phone.setText("0702451805");
-        others.setText("In a realationship with DA");
+        others.setText("");
 
         return view;
     }
