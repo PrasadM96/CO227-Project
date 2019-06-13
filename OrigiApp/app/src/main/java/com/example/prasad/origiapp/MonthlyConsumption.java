@@ -34,8 +34,8 @@ public class MonthlyConsumption extends AppCompatActivity {
         home = (Button) findViewById(R.id.home);
 
         List<Map<String,String>> myDataList = null;
-        GetMonthlyConsumption getMonthlyConsumption = new GetMonthlyConsumption();
-        myDataList = getMonthlyConsumption.getdata();
+        GetData getMonthlyConsumption = new GetData();
+        myDataList = getMonthlyConsumption.getMonthlyConsumption();
 
         Toast.makeText(MonthlyConsumption.this,(String)myDataList.get(0).values().toArray()[0],Toast.LENGTH_LONG).show();
 

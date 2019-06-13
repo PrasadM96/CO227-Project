@@ -33,7 +33,7 @@ public class RealActivity extends AppCompatActivity implements NavigationView.On
 
     //Button dailyConsumption,monthlyConsumption;
     //TextView relay_status;
-    String relay,ConsumerNo,MeterNo,monthlyConsumption,relayStatus;
+    String relay,ConsumerNo,MeterNo,monthlyConsumption,relayStatus,warning;
     private Toolbar toolbar;
     private BottomNavigationView bottomNavigationView;
     private HomeFragment homeFragment;
@@ -49,6 +49,7 @@ public class RealActivity extends AppCompatActivity implements NavigationView.On
         MeterNo = in.getStringExtra("MeterNo");
         monthlyConsumption = in.getStringExtra("monthlyConsumption");
         relayStatus = in.getStringExtra("relayStatus");
+        warning = in.getStringExtra("warning");
 
         homeFragment=new HomeFragment(monthlyConsumption,relayStatus);
 

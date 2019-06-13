@@ -42,7 +42,7 @@ public class HomeActivity extends AppCompatActivity implements TextWatcher, Comp
     Connection con;
     String un,pass,db,ip;
     static String seria,passwordd;
-    String relay,monthlyConsumption;
+    String relay,monthlyConsumption,warning;
     //End Declaring connection variables
     private CheckBox rem_userpass;
     SharedPreferences sharedPreferences;
@@ -51,6 +51,7 @@ public class HomeActivity extends AppCompatActivity implements TextWatcher, Comp
     private static final String KEY_REMEMBER = "remember";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASS = "password";
+    static String MonthlyConsumption,Warning;
 
 
     @Override
@@ -153,7 +154,7 @@ public class HomeActivity extends AppCompatActivity implements TextWatcher, Comp
             {
                 Toast toast2 = Toast.makeText(HomeActivity.this , "Login Successfull" , Toast.LENGTH_LONG);
                 TextView v2 = (TextView) toast2.getView().findViewById(android.R.id.message);
-                v2.setTextColor(Color.RED);
+                v2.setTextColor(Color.GREEN);
                 toast2.show();
                 //finish();
             }
@@ -187,17 +188,25 @@ public class HomeActivity extends AppCompatActivity implements TextWatcher, Comp
                             homeIntent.putExtra("ConsumerNo",passwordd);
                             homeIntent.putExtra("MeterNo",seria);
                             List<Map<String,String>> myDataList1 = null;
-                            GetMonthlyConsumption getMonthlyConsumption = new GetMonthlyConsumption();
-                            myDataList1 = getMonthlyConsumption.getdata();
+
+                            GetData getData = new GetData();
+                            myDataList1 = getData.getMonthlyConsumption();
 
                             monthlyConsumption = (String)myDataList1.get(0).values().toArray()[0];
+                            MonthlyConsumption = monthlyConsumption;
                             homeIntent.putExtra("monthlyConsumption",monthlyConsumption);
 
                             List<Map<String,String>> myDataList2 = null;
-                            GetRelayStatus getData = new GetRelayStatus();
-                            myDataList2 = getData.getdata();
+                            myDataList2 = getData.getRelayStatus();
                             String a=myDataList2.get(0).values().toString();
                             homeIntent.putExtra("relayStatus",a);
+
+                            /*List<Map<String,String>> myDataList3 = null;
+                            myDataList3 = getData.getWarningValue(seria);
+                            warning=myDataList3.get(0).values().toString();
+                            Warning = warning;
+                            homeIntent.putExtra("warning",warning);*/
+
 
                             startActivity(homeIntent);
                             finish();

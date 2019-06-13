@@ -150,8 +150,8 @@ public class MonthlyFragment extends Fragment implements OnChartGestureListener,
     public void drawchart(){
         lineChart = (LineChart) fragView.findViewById(R.id.linechart);
         List<Map<String,String>> myDataList = null;
-        GetMonthlyConsumption getMonthlyConsumption = new GetMonthlyConsumption();
-        myDataList = getMonthlyConsumption.getdata();
+        GetData getMonthlyConsumption = new GetData();
+        myDataList = getMonthlyConsumption.getMonthlyConsumption();
 
         lineChart.setOnChartGestureListener(this);
         lineChart.setOnChartValueSelectedListener(this);

@@ -27,15 +27,15 @@ public class HomeFragment extends Fragment {
     RingProgressBar ringProgressBar;
     String monthlyConsumption,relayStatus;
 
-    int limit = 1000;
-    //int value = (Integer.parseInt(monthlyConsumption)/limit)*100;
+    //int limit = Integer.parseInt(monthlyConsumption);
+    //int value = (Integer.parseInt(HomeActivity.MonthlyConsumption)/limit)*100;
     int progress = 0;
     Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
             if(msg.what == 0){
                 if(progress < 100){
-                    progress=5;
+                    progress=10;
                     ringProgressBar.setProgress(progress);
                 }
             }
@@ -48,8 +48,8 @@ public class HomeFragment extends Fragment {
 
     @SuppressLint("ValidFragment")
     public HomeFragment(String monthlyConsumption, String relayStatus){
-        this.monthlyConsumption=monthlyConsumption;
-        this.relayStatus=relayStatus;
+        this.monthlyConsumption = monthlyConsumption;
+        this.relayStatus = relayStatus;
     }
     @Nullable
     @Override
@@ -65,6 +65,7 @@ public class HomeFragment extends Fragment {
         usage1 = (TextView) view.findViewById(R.id.usage1);
         usage2 = (TextView) view.findViewById(R.id.usage2);
         usage3 = (TextView) view.findViewById(R.id.usage3);
+
         /*ringProgressBar.setOnProgressListener(new RingProgressBar.OnProgressListener()
         {
 

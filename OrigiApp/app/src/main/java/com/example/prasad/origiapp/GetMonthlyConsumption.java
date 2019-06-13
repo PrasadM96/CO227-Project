@@ -13,7 +13,7 @@ public class GetMonthlyConsumption {
     String ConnectionResult = "";
     Boolean isSuccess = false;
 
-    public List<Map<String,String>> getdata() {
+    public List<Map<String,String>> getMonthlyConsumption() {
 
         List<Map<String, String>> data = null;
         data = new ArrayList<Map<String, String>>();
@@ -51,4 +51,43 @@ public class GetMonthlyConsumption {
 
         return data;
     }
+
+    public List<Map<String,String>> getRelayStatus() {
+
+        List<Map<String, String>> data = null;
+        data = new ArrayList<Map<String, String>>();
+        try
+        {
+            ConnectionHelper conStr=new ConnectionHelper();
+            connect =conStr.connectionclasss();        // Connect to database
+            if (connect == null)
+            {
+                ConnectionResult = "Check Your Internet Access!";
+            }
+            else
+            {
+                // Change below query according to your own database.
+                String query = "SELECT RelayStatus FROM [DB_A48F31_ceb].[dbo].[Meter] where MeterSerial = "+HomeActivity.seria+"";
+                Statement stmt = connect.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
+                while (rs.next()){
+                    Map<String,String> datanum=new HashMap<String,String>();
+                    datanum.put("RelayStatus",rs.getString("RelayStatus"));
+                    data.add(datanum);
+                }
+
+                ConnectionResult = " successful";
+                isSuccess=true;
+                connect.close();
+            }
+        }
+        catch (Exception ex)
+        {
+            isSuccess = false;
+            ConnectionResult = ex.getMessage();
+        }
+
+        return data;
+    }
+
 }
