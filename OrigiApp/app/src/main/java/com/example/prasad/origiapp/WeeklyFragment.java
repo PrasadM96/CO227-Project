@@ -171,10 +171,10 @@ public class WeeklyFragment<OnChartValueSelectedListene> extends Fragment implem
 
         ArrayList<Entry> yValues = new ArrayList<>();
         //yValues.add(new Entry(0,Float.parseFloat((String)myDataList.get(0).values().toArray()[0])));
-        yValues.add(new Entry(1,500f));
-        yValues.add(new Entry(2,700f));
-        yValues.add(new Entry(3,300f));
-        yValues.add(new Entry(4,500f));
+        yValues.add(new Entry(1,587.36f));
+        yValues.add(new Entry(2,701.25f));
+        yValues.add(new Entry(3,639.69f));
+        yValues.add(new Entry(4,674.58f));
 
         LineDataSet set1 = new LineDataSet(yValues,"");
 

@@ -173,17 +173,17 @@ public class MonthlyFragment extends Fragment implements OnChartGestureListener,
 
         ArrayList<Entry> yValues = new ArrayList<>();
         yValues.add(new Entry(0,Float.parseFloat((String)myDataList.get(0).values().toArray()[0])));
-        yValues.add(new Entry(1,500f));
-        yValues.add(new Entry(2,700f));
-        yValues.add(new Entry(3,300f));
-        yValues.add(new Entry(4,500f));
-        yValues.add(new Entry(5,600f));
-        yValues.add(new Entry(6,650f));
-        yValues.add(new Entry(7,250f));
-        yValues.add(new Entry(8,1100f));
-        yValues.add(new Entry(9,800f));
-        yValues.add(new Entry(10,1150f));
-        yValues.add(new Entry(11,100f));
+        yValues.add(new Entry(1,1845.898f));
+        yValues.add(new Entry(2,445.025f));
+        yValues.add(new Entry(3,976.004f));
+        yValues.add(new Entry(4,1140.893f));
+        yValues.add(new Entry(5,1302.154f));
+        yValues.add(new Entry(6,1346.561f));
+        yValues.add(new Entry(7,400.748f));
+        yValues.add(new Entry(8,1709.79f));
+        yValues.add(new Entry(9,1746.1f));
+        yValues.add(new Entry(10,549.605f));
+        yValues.add(new Entry(11,1118.846f));
 
         LineDataSet set1 = new LineDataSet(yValues,"");
 
